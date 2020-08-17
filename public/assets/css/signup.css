@@ -1,0 +1,71 @@
+body
+{
+	margin: 0;	
+	padding: 0;
+	height: 100vh;
+}
+#particles-js
+{
+	height: 100%;
+	background: #0099F7;  
+	background: -webkit-linear-gradient(to right, #F11712, #0099F7); 
+	background: linear-gradient(to right, #F11712, #0099F7); 
+}
+#sign
+{
+	position: absolute;
+	text-align: center;
+	margin: 15px 525px;
+}
+form
+{
+	margin: 7% 15%;
+}
+input:focus{
+	outline: 0 0 0 0  !important;
+	box-shadow: 0 0 0 0 !important;
+}
+button
+{
+	width: 200px;
+	margin-top: 7%;
+	margin-bottom: 6%;
+	border-radius: 0.5em;
+	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.4);
+}
+.logo
+{
+	font-family: Acme;
+	text-align: center;
+	margin-top: 1.5%;
+	color: white;
+	font-size: 4em;
+}
+.container
+{
+	font-family: Zilla Slab;
+	text-align: center;
+	background-color: rgba(255,255,255,0.7);
+	margin: 2.5% auto;
+	width: 460px;
+	border-radius: 1.5em;
+	box-shadow: 3px 3px 2.5px 1.5px rgba(0, 0, 0, 0.2);
+}
+.input-group-prepend
+{
+	background-color: white;
+	width:50px;
+	display: inline-block;
+	font-size: 20px;
+	padding-top: 2%;
+	border-top-left-radius: 0.25em;
+	border-bottom-left-radius: 0.25em;
+}
+.form-control
+{
+	border: none;
+}
+.gen
+{
+	margin-right: 40px;
+}

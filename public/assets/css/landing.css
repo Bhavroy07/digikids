@@ -1,0 +1,84 @@
+body
+{
+	background: #0099F7;  
+	background: -webkit-linear-gradient(to right, #F11712, #0099F7); 
+	background: linear-gradient(to right, #F11712, #0099F7); 
+}
+.logo
+{
+	font-family: Acme;
+	margin-top: 1.5%;
+	color: white;
+	font-size: 4em;
+	text-align: center;
+}
+.row
+{
+	margin-top: 6%;
+	font-family: Cookie;
+}
+#tagline
+{
+	font-family: 'Courgette';
+	font-size: 2.8em;
+	color: white;
+}
+.options
+{
+	text-align: center;
+}
+.slide
+{
+	padding-left: 12%;
+}
+.btn
+{
+	width: 150px;
+	margin-right: 5%;
+	margin-left: 2%;
+	margin-bottom: 10%;
+	font-family: Zilla Slab;
+	font-size: 1.5em;
+	box-shadow: 3px 3px 2px 1.5px rgba(0,0,0,0.2);
+}
+.frame
+{
+	border-color: #de455c rgba(255,255,255,0.8);
+	border-image: none;
+	border-radius: 25% 0 25% 0;
+	border-style: solid;
+	border-width: 20px;
+	height: 320px;
+	width: 400px;
+	overflow: hidden;
+	box-shadow: 3px 3px 2px 1.5px rgba(0,0,0,0.2);
+}
+.img-size
+{
+	width: 360px;
+	height: 350px;
+}
+
+.fade 
+{
+	-webkit-animation-name: slidein;
+	-webkit-animation-duration: 3.5s;
+	animation-name: slidein;
+	animation-duration: 3.5s;
+}
+
+@-webkit-keyframes slidein {
+	from {opacity: .02}
+	to {opacity: 1}
+}
+
+@keyframes slidein {
+	from {opacity: .02}
+	to {opacity: 1}
+}
+#author
+{
+	margin-top: 5%;
+	font-family: Cookie;
+	text-align: center;
+}
