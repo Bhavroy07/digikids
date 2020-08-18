@@ -26,14 +26,22 @@ childSchema.methods.comparePassword=function(candidatePassword,checkPassword){
 }
 
 //hashing password before putting in database
-childSchema.pre('save', function (next){
+childSchema.pre('save',async function (next){
+    const user=this
+    if(user.isModified('password')){
+        user.password=await bcrypt.hash(user.password,8)
+    }
+    next()
+    
+    })
+/*childSchema.pre('save', function (next){
     const user=this
     if(user.isModified('password')){
         user.password= bcrypt.hash(user.password,8)
     }
     next()
     
-    })
+    })*/
 var User = mongoose.model("User", childSchema);
 
 module.exports=User
