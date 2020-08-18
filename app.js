@@ -124,6 +124,12 @@ app.get('/listen/:id',requireLogin,function(req,res){
     res.sendFile(dir+`/listen/${tt}.html`)
 })
 
+//play mode request
+app.get('/Play',function(req,res){
+  res.sendFile(dir+'/play/game.html')
+
+})
+
 
 
 //logout code
