@@ -1,8 +1,8 @@
 body
 {
-	background: #0099F7;  
-	background: -webkit-linear-gradient(to right, #F11712, #0099F7); 
-	background: linear-gradient(to right, #F11712, #0099F7); 
+	background-image: url("../images/img.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 .logo
 {
@@ -21,7 +21,6 @@ body
 {
 	font-family: 'Courgette';
 	font-size: 2.8em;
-	color: white;
 }
 .options
 {
@@ -33,17 +32,19 @@ body
 }
 .btn
 {
-	width: 150px;
-	margin-right: 5%;
+	width: 200px;
+	height: 50px;
+	margin-right: 3%;
 	margin-left: 2%;
 	margin-bottom: 10%;
 	font-family: Zilla Slab;
 	font-size: 1.5em;
-	box-shadow: 3px 3px 2px 1.5px rgba(0,0,0,0.2);
+	box-shadow: 4px 5px 4px 1.5px rgba(0,0,0,0.2);
 }
+
 .frame
 {
-	border-color: #de455c rgba(255,255,255,0.8);
+	border-color: rgba(250,10,10,0.7) rgba(20,255,20,0.8);
 	border-image: none;
 	border-radius: 25% 0 25% 0;
 	border-style: solid;
