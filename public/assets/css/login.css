@@ -1,22 +1,13 @@
 body
 {
-	margin: 0;	
-	padding: 0;
-	height: 100vh;
-
-}
-#particles-js
-{
-	height: 100%;
-	background: #0099F7;  
-	background: -webkit-linear-gradient(to right, #F11712, #0099F7); 
-	background: linear-gradient(to right, #F11712, #0099F7); 
+	background-image: url("../images/img.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 #log
 {
-	position: absolute;
 	text-align: center;
-	margin: 15px 525px;
+	margin: 0.6% auto;
 }
 form
 {
@@ -25,7 +16,7 @@ form
 .logo
 {
 	font-family: Acme;
-	margin-top: 1.5%;
+	margin-top: 0.8%;
 	color: white;
 	font-size: 4em;
 }
@@ -33,8 +24,8 @@ form
 {
 	font-family: Zilla Slab;
 	text-align: center;
-	background-color: rgba(255,255,255,0.7);
-	margin-top: 30px;
+	background-color: rgba(0,230,20,0.6);
+	margin: 1.25% auto;
 	width: 460px;
 	border-radius: 1.5em;
 	box-shadow: 3px 3px 2.5px 1.5px rgba(0, 0, 0, 0.2);
@@ -64,4 +55,8 @@ button
 	margin-bottom: 10%;
 	border-radius: 0.5em;
 	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.4);
+}
+#forgot
+{
+	margin-top: 0.2px;
 }
