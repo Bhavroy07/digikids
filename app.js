@@ -27,7 +27,8 @@ app.use(cookieParser());
 
 var mongoose = require("mongoose");
 var User = require('./models/user')
-var Q1 = require('./models/question')
+var Q1 = require('./models/question1')
+var Q3 = require('./models/question3')
 const dir=path.join(__dirname, "public")
 app.use(express.static(dir));
 mongoose.Promise = global.Promise;
@@ -192,5 +193,9 @@ app.listen(port, () => {
 //var myobj = {question:"what is my name",option1:"BHARGAV",option2:"ROY",option3:"bhav",option4:"ana",answer:"BHARGAV"}
 //var que = new Q1(myobj)
 //que.save()
+
+var myobj = {question:"how are u",answer:"mai thik hoon"}
+var que = new Q3(myobj)
+que.save()
 
 
