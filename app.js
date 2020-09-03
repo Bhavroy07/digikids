@@ -24,8 +24,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
+
 var mongoose = require("mongoose");
 var User = require('./models/user')
+var Q1 = require('./models/question')
 const dir=path.join(__dirname, "public")
 app.use(express.static(dir));
 mongoose.Promise = global.Promise;
@@ -186,4 +188,9 @@ app.get('/:level/:f', function(req, res) {
 app.listen(port, () => {
     console.log("Server listening on port " +port );
 });
+
+//var myobj = {question:"what is my name",option1:"BHARGAV",option2:"ROY",option3:"bhav",option4:"ana",answer:"BHARGAV"}
+//var que = new Q1(myobj)
+//que.save()
+
 
