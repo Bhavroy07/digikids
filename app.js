@@ -29,6 +29,8 @@ var mongoose = require("mongoose");
 var User = require('./models/user')
 var Q1 = require('./models/question1')
 var Q3 = require('./models/question3')
+var Q2 = require('./models/question2')
+var func = require('./public/practice/assets/js/beginner')
 const dir=path.join(__dirname, "public")
 app.use(express.static(dir));
 mongoose.Promise = global.Promise;
@@ -127,6 +129,25 @@ app.get('/listen/:id',requireLogin,function(req,res){
     res.sendFile(dir+`/listen/${tt}.html`)
 })
 
+//get request to the practice pages
+app.get('/practice/:id',requireLogin,function(req,res){
+  const ttt=req.params.id
+  Q2.findOne({answer:"apple"},function(err,user){
+    if(err)
+    console.log("kata")
+    if(user)
+    {
+      //console.log(user.question)
+      var st = func(user)
+      console.log(st)
+      res.sendFile(dir+`/practice/${ttt}.html`)
+    }
+  })
+  
+
+  //res.sendFile(dir+`/practice/${ttt}.html`)
+})
+
 //play mode request
 app.get('/Play',function(req,res){
   res.sendFile(dir+'/play/game.html')
@@ -185,17 +206,34 @@ app.get('/:level/:f', function(req, res) {
 
 
 
+
+
 //launching the express server
 app.listen(port, () => {
     console.log("Server listening on port " +port );
 });
 
+
+/*Q1.findOne({question:"what is my name"},function(err,ques){
+  if(err)
+  console.log("kata")
+  if(ques)
+  {
+    console.log(ques.option1)
+  }
+})*/
+
+
 //var myobj = {question:"what is my name",option1:"BHARGAV",option2:"ROY",option3:"bhav",option4:"ana",answer:"BHARGAV"}
 //var que = new Q1(myobj)
 //que.save()
 
-var myobj = {question:"how are u",answer:"mai thik hoon"}
-var que = new Q3(myobj)
-que.save()
+//var myobj = {question:"./videos/apple.jpg",answer:"apple"}
+//var que = new Q2(myobj)
+//que.save()
+
+//var myobj = {question:"how are u",answer:"mai thik hoon"}
+//var que = new Q3(myobj)
+//que.save()
 
 
