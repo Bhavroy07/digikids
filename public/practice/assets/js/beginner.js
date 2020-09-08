@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var start=document.querySelector('.btn-start');
 console.log(start)
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -18,3 +19,11 @@ recognition.onresult = function(event)
 start.addEventListener("click", function(){
 	recognition.start();
 });
+=======
+module.exports=function myFunc(img)
+{
+    //document.getElementById("myImg").src=img.question
+    return img.question
+    
+}
+>>>>>>> 5fc3e7781550507836581c124749ed926bf7be6a
