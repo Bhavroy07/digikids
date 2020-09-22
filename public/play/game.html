@@ -55,9 +55,29 @@
                         src:['sounds/moon.mp3']
                     }
                 )
+            },
+            e:{
+                sound: new Howl(
+                    {
+                        src:['sounds/confetti.mp3']
+                    }
+                )
+            },
+            r:{
+                sound: new Howl(
+                    {
+                        src:['sounds/ufo.mp3']
+                    }
+                )
+            },
+            t:{
+                sound: new Howl(
+                    {
+                        src:['sounds/strike.mp3']
+                    }
+                )
             }
-
-
+            
         };
 
         <!-- var circles = []; -->
@@ -70,8 +90,11 @@
                 color = '#000000'.slice(0, -color.length) + color;
 
                 var maxPoint = new Point(view.size.width, view.size.height);
+                console.log(view.size.width);
+                console.log(view.size.height);
                 var randomPoint = Point.random();
                 var point = maxPoint * randomPoint;
+                console.log(point);
                 var newCircle = new Path.Circle(point, 500);
                 newCircle.fillColor = color;
                 keyData[event.key].sound.play();
@@ -89,6 +112,8 @@
             {
                 var color = Math.floor(Math.random() * 16777216).toString(16);
                 color = '#000000'.slice(0, -color.length) + color;
+
+                23
                 var maxPoint = new Point(view.size.width, view.size.height);
                 var randomPoint = Point.random();
                 var rpoint = maxPoint * randomPoint;
@@ -111,9 +136,13 @@
                         rect.scaling+=0.07;
                     }
                     else if(event.count>50)
-                    {rect.fillColor.hue+=1;
-                    rect.rotate(3);
-                    rect.scale(0.8)}
+                    {
+                        rect.fillColor.hue+=1;
+                        rect.rotate(3);
+                        rect.scale(0.8)
+                    }
+                    else if(event.count > 100)
+                    rect.remove();
                 }
             }
             if(event.key=='d')
@@ -262,6 +291,56 @@
                     path.remove();
                 }
             }
+            if(event.key=='e')
+            {
+                var path= new Path.Rectangle(
+                    {
+                        point:[0,0],
+                        size:[1,1000],
+                        fillColor:'#00AAFF'
+                    }
+                );
+                keyData[event.key].sound.play();
+                path.onFrame = function(event)
+                {
+                    if(event.count<35)
+                    {
+                        path.scaling+=0.4;
+                    }
+                    if(event.count>35 && event.count<70)
+                    {
+                        path.scaling-=0.4;
+                    }
+                    if(event.count>70)
+                    path.remove();
+                }
+            }
+
+            if(event.key=='t')
+            {
+                var path= new Path.Rectangle(
+                    {
+                        point:[1500,0],
+                        size:[1,1000],
+                        fillColor:'#00AF06'
+                    }
+                );
+                keyData[event.key].sound.play();
+                path.onFrame = function(event)
+                {
+                    if(event.count<35)
+                    {
+                        path.scaling+=0.4;
+                    }
+                    if(event.count>35 && event.count<70)
+                    {
+                        path.scaling-=0.4;
+                    }
+                    if(event.count>70)
+                    path.remove();
+                }
+            }
+
             if(event.key=='q')
             {
                 var amount = 5;
@@ -318,54 +397,69 @@
                     {
                         path.remove();
                     }
-
                 }
             }
+
             if(event.key=='w')
             {
-                
-                //var arrx=[],arry=[];
-                //var group = new Group();
-
-                
-
-                    var path = new Path.Circle(
-                        {
-                            fillColor:'black',
-                            radius:5,
-                            center:[600,300]
-                        }
-                    );
-                    //group.addChild(path);
+                var path = new Path.Circle(
+                    {
+                        radius : 30,
+                        fillColor : 'yellow',
+                        strokeColor : 'black',
+                        strokeWidth : 0 ,
+                        center : [500 , 300]
+                    }
+                );
                 keyData[event.key].sound.play();
                 path.onFrame=function(event)
                 {
-                    if(event.count<90)
+                    if(event.count<120)
                     {
                         path.rotate(3,view.center);
-                        //console.log(path.position.x);
-                        //console.log(path.position.y);
-                        //arrx.push(path.position.x);
-                        //arry.push(path.position.y);
+                        path.fillColor.hue+=1;
                     }
-                    if(event.count>90)
+                    if(event.count>120)
                     {
                         path.remove();
                     }
                 }
-                //console.log(arrx);
-                //console.log(arry);
             }
-            
+
+            if(event.key=='r')
+            {
+
+                var color = Math.floor(Math.random() * 16777216).toString(16);
+                color = '#000000'.slice(0, -color.length) + color;
+
+                var path = new Path.Circle(
+                    {
+                        radius : 150,
+                        fillColor : 'white',
+                        strokeWidth : '20',
+                        strokeColor : color,
+                        center : view.center
+                    }
+                );
+                keyData[event.key].sound.play();
+                path.onFrame=function(event)
+                {
+                    if(event.count<70)
+                    {
+                        path.strokeColor.hue+=3;
+                    }
+                    if(event.count>70)
+                    {
+                        path.remove();
+                    }
+                }
+            }
         }
-
-        
-
         <!-- alert(view.size);  this will give an alert showing the max width and max height of the screen-->
         <!-- alert(view.center); this will give an alert showing the center of the screen-->
     </script>
 </head>
-<body>
+<body style="margin: 0;">
 <canvas id="myCanvas" resize style="width:100%; height:100%;"></canvas>
 </body>
 </html>
