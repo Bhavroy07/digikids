@@ -105,12 +105,14 @@ app.post('/users/login', function(req, res) {
     User.findOne({ email: req.body.email }, function(err, user) {
       if (!user) {
         res.send( { error: 'Invalid email or password.' });
+        
       } else {
         user.comparePassword(req.body.password,(err,isMatch)=>
         {
             if(err) throw err
             if(!isMatch){
               res.status(400).json({message:'incorrect password'})
+              
             }
             else{
             req.session.user = user;
@@ -132,7 +134,7 @@ app.get('/listen/:id',requireLogin,function(req,res){
 //get request to the practice pages
 app.get('/practice/:id',requireLogin,function(req,res){
   const ttt=req.params.id
-  Q2.findOne({answer:"apple"},function(err,user){
+  /*Q2.findOne({answer:"apple"},function(err,user){
     if(err)
     console.log("kata")
     if(user)
@@ -142,10 +144,10 @@ app.get('/practice/:id',requireLogin,function(req,res){
       console.log(st)
       res.sendFile(dir+`/practice/${ttt}.html`)
     }
-  })
+  })*/
   
 
-  //res.sendFile(dir+`/practice/${ttt}.html`)
+  res.sendFile(dir+`/practice/${ttt}.html`)
 })
 
 //play mode request
