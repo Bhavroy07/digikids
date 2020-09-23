@@ -7,7 +7,11 @@ function getvalues()
     {
         arr[i]=obj[i].textContent
     }
-    console.log(LevenshteinDistance(arr[0],"monday"))
+    var arr2=["apple","dog","cat","elephant"];
+    for(var i2=0;i2<arr.length;i2++)
+    {
+    console.log(LevenshteinDistance(arr[i2],arr2[i2])+" ")
+    }
     
     
     
