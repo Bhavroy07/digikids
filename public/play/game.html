@@ -1,465 +1,502 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Circles</title>
+    <title>Play</title>
     <script rel="text/javascript" src="paper-full.js"></script>
     <script type="text/javascript" src="howler.js"></script>
     <script type="text/paperscript" canvas="myCanvas">
 
         var keyData = {
-            f:{
-                sound: new Howl(
-                    {
-                        src:['sounds/clay.mp3']
-                    }
-                )
-            },
-            g:{
-                sound: new Howl(
-                    {
-                        src:['sounds/bubbles.mp3']
-                    }
-                )
-            },
-            s:{
-                sound: new Howl(
-                    {
-                        src:['sounds/dotted-spiral.mp3']
-                    }
-                )
-            },
-            d:{
-                sound: new Howl(
-                    {
-                        src:['sounds/flash-2.mp3']
-                    }
-                )
-            },
-            q:{
-                sound: new Howl(
-                    {
-                        src:['sounds/prism-1.mp3']
-                    }
-                )
-            },
-            a:{
-                sound: new Howl(
-                    {
-                        src:['sounds/suspension.mp3']
-                    }
-                )
-            },
-            w:{
-                sound: new Howl(
-                    {
-                        src:['sounds/moon.mp3']
-                    }
-                )
-            },
-            e:{
-                sound: new Howl(
-                    {
-                        src:['sounds/confetti.mp3']
-                    }
-                )
-            },
-            r:{
-                sound: new Howl(
-                    {
-                        src:['sounds/ufo.mp3']
-                    }
-                )
-            },
-            t:{
-                sound: new Howl(
-                    {
-                        src:['sounds/strike.mp3']
-                    }
-                )
-            }
-            
-        };
-
-        <!-- var circles = []; -->
-
-        function onKeyDown(event) 
+        f:{
+        sound: new Howl(
         {
-            if (event.key=='a') 
-            {
-                var color = Math.floor(Math.random() * 16777216).toString(16);
-                color = '#000000'.slice(0, -color.length) + color;
+            src:['sounds/clay.mp3']
+        }
+        )
+    },
+    g:{
+    sound: new Howl(
+    {
+        src:['sounds/bubbles.mp3']
+    }
+    )
+},
+s:{
+sound: new Howl(
+{
+    src:['sounds/dotted-spiral.mp3']
+}
+)
+},
+d:{
+sound: new Howl(
+{
+    src:['sounds/flash-2.mp3']
+}
+)
+},
+q:{
+sound: new Howl(
+{
+    src:['sounds/prism-1.mp3']
+}
+)
+},
+a:{
+sound: new Howl(
+{
+    src:['sounds/suspension.mp3']
+}
+)
+},
+w:{
+sound: new Howl(
+{
+    src:['sounds/moon.mp3']
+}
+)
+},
+e:{
+sound: new Howl(
+{
+    src:['sounds/confetti.mp3']
+}
+)
+},
+r:{
+sound: new Howl(
+{
+    src:['sounds/ufo.mp3']
+}
+)
+},
+t:{
+sound: new Howl(
+{
+    src:['sounds/strike.mp3']
+}
+)
+}
 
-                var maxPoint = new Point(view.size.width, view.size.height);
-                console.log(view.size.width);
-                console.log(view.size.height);
-                var randomPoint = Point.random();
-                var point = maxPoint * randomPoint;
-                console.log(point);
-                var newCircle = new Path.Circle(point, 500);
-                newCircle.fillColor = color;
-                keyData[event.key].sound.play();
-                newCircle.onFrame=function(event)
-                {
-                    
-                    newCircle.scale(.9);
-                    newCircle.fillColor.hue+=1;
-                    if(event.count>50)
-                    newCircle.remove();
-                }
-            }
-            
-            if(event.key=='s')
-            {
-                var color = Math.floor(Math.random() * 16777216).toString(16);
-                color = '#000000'.slice(0, -color.length) + color;
+};
 
-                23
-                var maxPoint = new Point(view.size.width, view.size.height);
-                var randomPoint = Point.random();
-                var rpoint = maxPoint * randomPoint;
-                var rect = new Path.Rectangle(
-                    {
-                        point:rpoint,
-                        size:[100,100],
-                        fillColor:color
-                    }
-                )
-                var group = new Group();
-                group.addChild(rect);
-                keyData[event.key].sound.play();
-                rect.onFrame=function(event)
-                {
-                    if(event.count<50)
-                    {
-                        rect.fillColor.hue+=1;
-                        rect.rotate(3);
-                        rect.scaling+=0.07;
-                    }
-                    else if(event.count>50)
-                    {
-                        rect.fillColor.hue+=1;
-                        rect.rotate(3);
-                        rect.scale(0.8)
-                    }
-                    else if(event.count > 100)
-                    rect.remove();
-                }
+<!-- var circles = []; -->
+
+function onKeyDown(event) 
+{
+    if (event.key=='a') 
+    {
+        var color = Math.floor(Math.random() * 16777216).toString(16);
+        color = '#000000'.slice(0, -color.length) + color;
+
+        var maxPoint = new Point(view.size.width, view.size.height);
+        console.log(view.size.width);
+        console.log(view.size.height);
+        var randomPoint = Point.random();
+        var point = maxPoint * randomPoint;
+        console.log(point);
+        var newCircle = new Path.Circle(point, 500);
+        newCircle.fillColor = color;
+        keyData[event.key].sound.play();
+        newCircle.onFrame=function(event)
+        {
+
+            newCircle.scale(.9);
+            newCircle.fillColor.hue+=1;
+            if(event.count>50)
+            newCircle.remove();
+        }
+    }
+
+    if(event.key=='s')
+    {
+        var color = Math.floor(Math.random() * 16777216).toString(16);
+        color = '#000000'.slice(0, -color.length) + color;
+
+        23
+        var maxPoint = new Point(view.size.width, view.size.height);
+        var randomPoint = Point.random();
+        var rpoint = maxPoint * randomPoint;
+        var rect = new Path.Rectangle(
+        {
+            point:rpoint,
+            size:[100,100],
+            fillColor:color
+        }
+        )
+        var group = new Group();
+        group.addChild(rect);
+        keyData[event.key].sound.play();
+        rect.onFrame=function(event)
+        {
+            if(event.count<50)
+            {
+                rect.fillColor.hue+=1;
+                rect.rotate(3);
+                rect.scaling+=0.07;
             }
-            if(event.key=='d')
+            else if(event.count>50)
             {
-                var path = new Path();
-                path.strokeColor=[0.8];
-                path.strokeWidth=25;
-                path.add(new Point(150,250));
-                path.add(new Point(150,250));
-                var path3 = new Path();
-                path3.strokeColor=[0.8];
-                path3.strokeWidth=25;
-                path3.add(new Point(150,310));
-                path3.add(new Point(150,310));
-                var path2 = new Path();
-                path2.strokeColor=[0.8];
-                path2.strokeWidth=25;
-                path2.add(new Point(150,280));
-                path2.add(new Point(150,280));
-                var path4 = new Path();
-                path4.strokeColor=[0.8];
-                path4.strokeWidth=25;
-                path4.add(new Point(150,340));
-                path4.add(new Point(150,340));
-                keyData[event.key].sound.play();
-                path4.onFrame=function(event)
-                {
-                    if(event.count <30)
-                    {
-                        path4.segments[0].point+=new Point(30,0);
-                        path4.segments[1].point += new Point(40,0);
-                    }
-                    if(event.count>30)
-                    {
-                        path4.opacity=0;
-                        path4.remove();
-                    }
-                    
-                }
-                path2.onFrame=function(event)
-                {
-                    if(event.count <30)
-                    {
-                        path2.segments[0].point+=new Point(30,0);
-                        path2.segments[1].point += new Point(40,0);
-                    }
-                    if(event.count>30)
-                    {
-                        path2.opacity=0;
-                        path2.remove();
-                    }
-                    
-                }
-                path.onFrame=function(event)
-                {
-                    if(event.count <30)
-                    {
-                        path.segments[0].point+=new Point(30,0);
-                        path.segments[1].point += new Point(40,0);
-                    }
-                    if(event.count>30)
-                    {
-                        path.opacity=0;
-                        path.remove();
-                    }
-                }
-                path3.onFrame=function(event)
-                {
-                    if(event.count <30)
-                    {
-                        path3.segments[0].point+=new Point(30,0);
-                        path3.segments[1].point += new Point(40,0);
-                    }
-                    if(event.count>30)
-                    {
-                        path3.opacity=0;
-                        path3.remove();
-                    }
-                }
-            }   
-            if(event.key=='f')
-            {
-                var path = new Path.Rectangle
-                (
-                    {
-                        point:[0,0],
-                        size:[2000,800],
-                        fillColor:'yellow'
-                    }
-                );
-                keyData[event.key].sound.play();
-                path.onFrame = function(event)
-                {
-                    if(event.count<2)
-                    {
-                        path.fillColor='#d9d6ce';
-                    }
-                    if(event.count>2 && event.count<4)
-                    {
-                        path.fillColor='white';
-                    }
-                    if(event.count>4 && event.count<6)
-                    {
-                        path.fillColor='#d9d6ce';
-                    }
-                    if(event.count>6 && event.count<8)
-                    {
-                        path.fillColor='white';
-                    }
-                    if(event.count>8 && event.count<10)
-                    {
-                        path.fillColor='#d9d6ce';
-                    }
-                    if(event.count>10 && event.count<12)
-                    {
-                        path.fillColor='white';
-                    }
-                    if(event.count>12)
-                    {
-                        path.remove();
-                    }
-                }
+                rect.fillColor.hue+=1;
+                rect.rotate(3);
+                rect.scale(0.8)
             }
-            
-            if(event.key=='g')
+            else if(event.count > 100)
+            rect.remove();
+        }
+    }
+    if(event.key=='d')
+    {
+        var path = new Path();
+        path.strokeColor=[0.8];
+        path.strokeWidth=25;
+        path.add(new Point(150,250));
+        path.add(new Point(150,250));
+        var path3 = new Path();
+        path3.strokeColor=[0.8];
+        path3.strokeWidth=25;
+        path3.add(new Point(150,310));
+        path3.add(new Point(150,310));
+        var path2 = new Path();
+        path2.strokeColor=[0.8];
+        path2.strokeWidth=25;
+        path2.add(new Point(150,280));
+        path2.add(new Point(150,280));
+        var path4 = new Path();
+        path4.strokeColor=[0.8];
+        path4.strokeWidth=25;
+        path4.add(new Point(150,340));
+        path4.add(new Point(150,340));
+        keyData[event.key].sound.play();
+        path4.onFrame=function(event)
+        {
+            if(event.count <30)
             {
-                var path= new Path.Rectangle(
-                    {
-                        point:[0,0],
-                        size:[2000,1],
-                        fillColor:'#e83d0e'
-                    }
-                );
-                keyData[event.key].sound.play();
-                path.onFrame = function(event)
-                {
-                    if(event.count<35)
-                    {
-                        path.scaling+=0.4;
-                    }
-                    if(event.count>35 && event.count<70)
-                    {
-                        path.scaling-=0.4;
-                    }
-                    if(event.count>70)
-                    path.remove();
-                }
+                path4.segments[0].point+=new Point(30,0);
+                path4.segments[1].point += new Point(40,0);
             }
-            if(event.key=='e')
+            if(event.count>30)
             {
-                var path= new Path.Rectangle(
-                    {
-                        point:[0,0],
-                        size:[1,1000],
-                        fillColor:'#00AAFF'
-                    }
-                );
-                keyData[event.key].sound.play();
-                path.onFrame = function(event)
-                {
-                    if(event.count<35)
-                    {
-                        path.scaling+=0.4;
-                    }
-                    if(event.count>35 && event.count<70)
-                    {
-                        path.scaling-=0.4;
-                    }
-                    if(event.count>70)
-                    path.remove();
-                }
+                path4.opacity=0;
+                path4.remove();
             }
 
-            if(event.key=='t')
+        }
+        path2.onFrame=function(event)
+        {
+            if(event.count <30)
             {
-                var path= new Path.Rectangle(
-                    {
-                        point:[1500,0],
-                        size:[1,1000],
-                        fillColor:'#00AF06'
-                    }
-                );
-                keyData[event.key].sound.play();
-                path.onFrame = function(event)
-                {
-                    if(event.count<35)
-                    {
-                        path.scaling+=0.4;
-                    }
-                    if(event.count>35 && event.count<70)
-                    {
-                        path.scaling-=0.4;
-                    }
-                    if(event.count>70)
-                    path.remove();
-                }
+                path2.segments[0].point+=new Point(30,0);
+                path2.segments[1].point += new Point(40,0);
+            }
+            if(event.count>30)
+            {
+                path2.opacity=0;
+                path2.remove();
             }
 
-            if(event.key=='q')
+        }
+        path.onFrame=function(event)
+        {
+            if(event.count <30)
             {
-                var amount = 5;
-
-                // The maximum height of the wave:
-                var height = 60;
-
-                // Create a new path and style it:
-                var path = new Path({
-                    // 80% black:
-                    //strokeColor: 'blue',
-                    strokeWidth: 10,
-                    strokeCap: 'square',
-                    // Set the shadow color of the circle to RGB black:
-                    shadowColor: new Color(0, 0, 0),
-                    // Set the shadow blur radius to 12:
-                    shadowBlur: 12,
-                    // Offset the shadow by { x: 5, y: 5 }
-                    shadowOffset: new Point(5, 5)
-                });
-
-                // Add 5 segment points to the path spread out
-                // over the width of the view:
-                var x=-300;
-                for (var i = 0; i <= amount; i++) 
-                {
-                    path.add(new Point(x,300));
-                    x+=200;
-                }
-
-                // Select the path, so we can see how it is constructed:
-                path.selected = true;
-                keyData[event.key].sound.play();
-                path.onFrame=function(event) {
-                    // Loop through the segments of the path:
-                    if(event.count<50)
-                    {
-                    for (var i = 0; i <= amount; i++) {
-                        var segment = path.segments[i];
-
-                        // A cylic value between -1 and 1
-                        var sinus = Math.sin(event.time * 6 + i);
-                        
-                        // Change the y position of the segment point:
-                        segment.point.y = sinus * height + 300;
-                        segment.point.x +=20    ;
-
-                    }
-                    // Uncomment the following line and run the script again
-                    // to smooth the path:
-                    path.smooth();
-                    }
-                    if(event.count>50)
-                    {
-                        path.remove();
-                    }
-                }
+                path.segments[0].point+=new Point(30,0);
+                path.segments[1].point += new Point(40,0);
             }
-
-            if(event.key=='w')
+            if(event.count>30)
             {
-                var path = new Path.Circle(
-                    {
-                        radius : 30,
-                        fillColor : 'yellow',
-                        strokeColor : 'black',
-                        strokeWidth : 0 ,
-                        center : [500 , 300]
-                    }
-                );
-                keyData[event.key].sound.play();
-                path.onFrame=function(event)
-                {
-                    if(event.count<120)
-                    {
-                        path.rotate(3,view.center);
-                        path.fillColor.hue+=1;
-                    }
-                    if(event.count>120)
-                    {
-                        path.remove();
-                    }
-                }
-            }
-
-            if(event.key=='r')
-            {
-
-                var color = Math.floor(Math.random() * 16777216).toString(16);
-                color = '#000000'.slice(0, -color.length) + color;
-
-                var path = new Path.Circle(
-                    {
-                        radius : 150,
-                        fillColor : 'white',
-                        strokeWidth : '20',
-                        strokeColor : color,
-                        center : view.center
-                    }
-                );
-                keyData[event.key].sound.play();
-                path.onFrame=function(event)
-                {
-                    if(event.count<70)
-                    {
-                        path.strokeColor.hue+=3;
-                    }
-                    if(event.count>70)
-                    {
-                        path.remove();
-                    }
-                }
+                path.opacity=0;
+                path.remove();
             }
         }
-        <!-- alert(view.size);  this will give an alert showing the max width and max height of the screen-->
-        <!-- alert(view.center); this will give an alert showing the center of the screen-->
-    </script>
+        path3.onFrame=function(event)
+        {
+            if(event.count <30)
+            {
+                path3.segments[0].point+=new Point(30,0);
+                path3.segments[1].point += new Point(40,0);
+            }
+            if(event.count>30)
+            {
+                path3.opacity=0;
+                path3.remove();
+            }
+        }
+    }   
+    if(event.key=='f')
+    {
+        var path = new Path.Rectangle
+        (
+        {
+            point:[0,0],
+            size:[2000,800],
+            fillColor:'yellow'
+        }
+        );
+        keyData[event.key].sound.play();
+        path.onFrame = function(event)
+        {
+            if(event.count<2)
+            {
+                path.fillColor='#d9d6ce';
+            }
+            if(event.count>2 && event.count<4)
+            {
+                path.fillColor='white';
+            }
+            if(event.count>4 && event.count<6)
+            {
+                path.fillColor='#d9d6ce';
+            }
+            if(event.count>6 && event.count<8)
+            {
+                path.fillColor='white';
+            }
+            if(event.count>8 && event.count<10)
+            {
+                path.fillColor='#d9d6ce';
+            }
+            if(event.count>10 && event.count<12)
+            {
+                path.fillColor='white';
+            }
+            if(event.count>12)
+            {
+                path.remove();
+            }
+        }
+    }
+
+    if(event.key=='g')
+    {
+        var path= new Path.Rectangle(
+        {
+            point:[0,0],
+            size:[2000,1],
+            fillColor:'#e83d0e'
+        }
+        );
+        keyData[event.key].sound.play();
+        path.onFrame = function(event)
+        {
+            if(event.count<35)
+            {
+                path.scaling+=0.4;
+            }
+            if(event.count>35 && event.count<70)
+            {
+                path.scaling-=0.4;
+            }
+            if(event.count>70)
+            path.remove();
+        }
+    }
+    if(event.key=='e')
+    {
+        var path= new Path.Rectangle(
+        {
+            point:[0,0],
+            size:[1,1000],
+            fillColor:'#00AAFF'
+        }
+        );
+        keyData[event.key].sound.play();
+        path.onFrame = function(event)
+        {
+            if(event.count<35)
+            {
+                path.scaling+=0.4;
+            }
+            if(event.count>35 && event.count<70)
+            {
+                path.scaling-=0.4;
+            }
+            if(event.count>70)
+            path.remove();
+        }
+    }
+
+    if(event.key=='t')
+    {
+        var path= new Path.Rectangle(
+        {
+            point:[1500,0],
+            size:[1,1000],
+            fillColor:'#00AF06'
+        }
+        );
+        keyData[event.key].sound.play();
+        path.onFrame = function(event)
+        {
+            if(event.count<35)
+            {
+                path.scaling+=0.4;
+            }
+            if(event.count>35 && event.count<70)
+            {
+                path.scaling-=0.4;
+            }
+            if(event.count>70)
+            path.remove();
+        }
+    }
+
+    if(event.key=='q')
+    {
+        var amount = 5;
+
+        // The maximum height of the wave:
+        var height = 60;
+
+        // Create a new path and style it:
+        var path = new Path({
+        // 80% black:
+        //strokeColor: 'blue',
+        strokeWidth: 10,
+        strokeCap: 'square',
+        // Set the shadow color of the circle to RGB black:
+        shadowColor: new Color(0, 0, 0),
+        // Set the shadow blur radius to 12:
+        shadowBlur: 12,
+        // Offset the shadow by { x: 5, y: 5 }
+        shadowOffset: new Point(5, 5)
+    });
+
+    // Add 5 segment points to the path spread out
+    // over the width of the view:
+    var x=-300;
+    for (var i = 0; i <= amount; i++) 
+    {
+        path.add(new Point(x,300));
+        x+=200;
+    }
+
+    // Select the path, so we can see how it is constructed:
+    path.selected = true;
+    keyData[event.key].sound.play();
+    path.onFrame=function(event) {
+    // Loop through the segments of the path:
+    if(event.count<50)
+    {
+        for (var i = 0; i <= amount; i++) {
+        var segment = path.segments[i];
+
+        // A cylic value between -1 and 1
+        var sinus = Math.sin(event.time * 6 + i);
+
+        // Change the y position of the segment point:
+        segment.point.y = sinus * height + 300;
+        segment.point.x +=20    ;
+
+    }
+    // Uncomment the following line and run the script again
+    // to smooth the path:
+    path.smooth();
+}
+if(event.count>50)
+{
+    path.remove();
+}
+}
+}
+
+if(event.key=='w')
+{
+    var path = new Path.Circle(
+    {
+        radius : 30,
+        fillColor : 'yellow',
+        strokeColor : 'black',
+        strokeWidth : 0 ,
+        center : [500 , 300]
+    }
+    );
+    keyData[event.key].sound.play();
+    path.onFrame=function(event)
+    {
+        if(event.count<120)
+        {
+            path.rotate(3,view.center);
+            path.fillColor.hue+=1;
+        }
+        if(event.count>120)
+        {
+            path.remove();
+        }
+    }
+}
+
+if(event.key=='r')
+{
+
+    var color = Math.floor(Math.random() * 16777216).toString(16);
+    color = '#000000'.slice(0, -color.length) + color;
+
+    var path = new Path.Circle(
+    {
+        radius : 150,
+        fillColor : 'white',
+        strokeWidth : '20',
+        strokeColor : color,
+        center : view.center
+    }
+    );
+    keyData[event.key].sound.play();
+    path.onFrame=function(event)
+    {
+        if(event.count<70)
+        {
+            path.strokeColor.hue+=3;
+        }
+        if(event.count>70)
+        {
+            path.remove();
+        }
+    }
+}
+}
+<!-- alert(view.size);  this will give an alert showing the max width and max height of the screen-->
+<!-- alert(view.center); this will give an alert showing the center of the screen-->
+</script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="game.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+
 </head>
 <body style="margin: 0;">
-<canvas id="myCanvas" resize style="width:100%; height:100%;"></canvas>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../landing.html"> DigiKids </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active disabled">
+                <a class="nav-link" href="game.html"> Play <i class="fa fa-gamepad" aria-hidden="true"></i> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../listen/beginner.html"> Listen <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i> </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="../practice/beginner.html"> Practice <i class="fa fa-volume-up" aria-hidden="true"></i></a>
+          </li>
+
+          
+
+      </ul>
+
+      <a href="../index.html" class="btn btn-outline-dark sign-out"> Sign out </a>
+
+  </div>
+</nav>
+
+<canvas id="myCanvas" resize style="width:100%; height:100%;"> 
+</canvas>
+
 </body>
 </html>

@@ -1,0 +1,36 @@
+.navbar
+{
+	font-family: 'Zilla Slab';
+	font-size: 1.2em;
+}
+.navbar-brand
+{
+	font-family: Acme;
+	color: white;
+	font-size: 1.5em;
+}
+.nav-item
+{
+	width: 175px;
+	margin:0 3%;
+	padding: 0 2%;
+	text-align: center;
+}
+.nav-item:hover
+{
+	border: 1px solid blue;
+	border-radius: 0.5em;
+	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.4);
+}
+
+.active
+{
+	border: 1px solid blue;
+	border-radius: 0.5em;
+	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.4);
+}
+.sign-out
+{
+	margin-left: 40%;
+	border-radius: 0.75em;
+}
