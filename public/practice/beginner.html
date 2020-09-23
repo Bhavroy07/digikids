@@ -58,190 +58,94 @@
   </nav>
 
   <!--Page Content-->
+  <!--form action="http://localhost:3000/beginner/quiz" method="POST"-->
   <div class="container">
 
-    <!-- Question 1 -->
     <div class="row ques q1">
-      <div class="col-lg-6 col-sm-6">
+
+      <div class="col-lg-6 col-sm-12">
         <div class="image">
           <img src="images/apple.jpg" class="img-thumbnail">
         </div>
       </div>
-      <div class="col-lg-6 col-sm-6">
+
+      <div class="col-lg-6 col-sm-12">
         <div class="input">
-          <button class="btn btn-warning btn-start"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
+          <button class="btn btn-success btn-start" id="btn-start1" onclick="voicetotext(1)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
           <div class="disp">
             <p> Your answer: </p>
-            <textarea rows="1" cols="20" class="ans ans1" readonly="true"></textarea>
+            <textarea rows="1" cols="20" class="ans ans1" id="ans1" contenteditable></textarea>
           </div>
         </div>
       </div>
+
     </div>
 
-    <!-- Question 2 -->
     <div class="row ques q2">
-      <div class="col-lg-6 col-sm-6">
-        <div class="image">
-          <img src="images/ball.jpg" class="img-thumbnail">
-        </div>
-      </div>
-      <div class="col-lg-6 col-sm-6">
-        <div class="input">
-          <button class="btn btn-warning btn-start"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
-          <div class="disp">
-            <p> Your answer: </p>
-            <textarea rows="1" cols="20" class="ans ans1" readonly="true"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Questiion 3 -->
-    <div class="row ques q3">
-      <div class="col-lg-6 col-sm-6">
-        <div class="image">
-          <img src="images/cat.jpg" class="img-thumbnail">
-        </div>
-      </div>
-      <div class="col-lg-6 col-sm-6">
-        <div class="input">
-          <button class="btn btn-warning btn-start"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
-          <div class="disp">
-            <p> Your answer: </p>
-            <textarea rows="1" cols="20" class="ans ans1" readonly="true"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 4 -->
-    <div class="row ques q4">
-      <div class="col-lg-6 col-sm-6">
+      <div class="col-lg-6 col-sm-12">
         <div class="image">
           <img src="images/dog.jpg" class="img-thumbnail">
         </div>
       </div>
-      <div class="col-lg-6 col-sm-6">
+
+      <div class="col-lg-6 col-sm-12">
         <div class="input">
-          <button class="btn btn-warning btn-start"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
+          <button class="btn btn-danger btn-start" id="btn-start2" onclick="voicetotext(2)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
           <div class="disp">
             <p> Your answer: </p>
-            <textarea rows="1" cols="20" class="ans ans1" readonly="true"></textarea>
+            <textarea rows="1" cols="20" class="ans ans1" id="ans2" contenteditable=""></textarea>
           </div>
         </div>
       </div>
+
     </div>
 
-    <!-- Question 5 -->
-    <div class="row ques q5">
-      <div class="col-lg-6 col-sm-6">
+    <div class="row ques q3">
+
+      <div class="col-lg-6 col-sm-12">
+        <div class="image">
+          <img src="images/cat.jpg" class="img-thumbnail">
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-sm-12">
+        <div class="input">
+          <button class="btn btn-warning btn-start btn-reset"  id="btn-start3" onclick="voicetotext(3)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
+          <div class="disp">
+            <p> Your answer: </p>
+            <textarea rows="1" cols="20" class="ans ans1" id="ans3" contenteditable></textarea>
+            <!--div class="ans ans1" id="ansu" contenteditable></div-->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row ques q4">
+
+      <div class="col-lg-6 col-sm-12">
         <div class="image">
           <img src="images/elephant.jpg" class="img-thumbnail">
         </div>
       </div>
-      <div class="col-lg-6 col-sm-6">
+
+      <div class="col-lg-6 col-sm-12">
         <div class="input">
-          <button class="btn btn-warning btn-start"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
+          <button class="btn btn-primary btn-start" id="btn-start4" onclick="voicetotext(4)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
           <div class="disp">
             <p> Your answer: </p>
-            <textarea rows="1" cols="20" class="ans ans1" readonly="true"></textarea>
+            <textarea rows="1" cols="20" class="ans ans1" id="ans4" contenteditable></textarea>
           </div>
         </div>
       </div>
+
     </div>
 
-    <!-- Question 6 -->
-    <div class="row ques q6">
-      <div class="col-lg-6 col-sm-6">
-        <div class="image">
-          <img src="images/fish.jpg" class="img-thumbnail">
-        </div>
-      </div>
-      <div class="col-lg-6 col-sm-6">
-        <div class="input">
-          <button class="btn btn-warning btn-start"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
-          <div class="disp">
-            <p> Your answer: </p>
-            <textarea rows="1" cols="20" class="ans ans1" readonly="true"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 7 -->
-    <div class="row ques q7">
-      <div class="col-lg-6 col-sm-6">
-        <div class="image">
-          <img src="images/giraffe.jpg" class="img-thumbnail">
-        </div>
-      </div>
-      <div class="col-lg-6 col-sm-6">
-        <div class="input">
-          <button class="btn btn-warning btn-start"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
-          <div class="disp">
-            <p> Your answer: </p>
-            <textarea rows="1" cols="20" class="ans ans1" readonly="true"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 8 -->
-    <div class="row ques q8">
-      <div class="col-lg-6 col-sm-6">
-        <div class="image">
-          <img src="images/lion.jpg" class="img-thumbnail">
-        </div>
-      </div>
-      <div class="col-lg-6 col-sm-6">
-        <div class="input">
-          <button class="btn btn-warning btn-start"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
-          <div class="disp">
-            <p> Your answer: </p>
-            <textarea rows="1" cols="20" class="ans ans1" readonly="true"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 9 -->
-    <div class="row ques q9">
-      <div class="col-lg-6 col-sm-6">
-        <div class="image">
-          <img src="images/monkey.jpg" class="img-thumbnail">
-        </div>
-      </div>
-      <div class="col-lg-6 col-sm-6">
-        <div class="input">
-          <button class="btn btn-warning btn-start"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
-          <div class="disp">
-            <p> Your answer: </p>
-            <textarea rows="1" cols="20" class="ans ans1" readonly="true"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 10 -->
-    <div class="row ques q10">
-      <div class="col-lg-6 col-sm-6">
-        <div class="image">
-          <img src="images/orange.jpg" class="img-thumbnail">
-        </div>
-      </div>
-      <div class="col-lg-6 col-sm-6">
-        <div class="input">
-          <button class="btn btn-warning btn-start"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
-          <div class="disp">
-            <p> Your answer: </p>
-            <textarea rows="1" cols="20" class="ans ans1" readonly="true"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
     
     <input type="submit" class="btn btn-info btn-submit">
   </div>
+<!--/form-->
   <p id="author">An initiation by Bhargav Roy, Nimit Jain and Dheeraj Rathee</p>
 
   <!-- Optional JavaScript -->
@@ -250,7 +154,6 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  <!--script type="text/javascript" src="assets/js/listen.js"></script-->
-  <!--script type="text/javascript" src="assets/js/beginner.js"></script-->
+
 </body>
 </html>

@@ -1,11 +1,22 @@
-function voicetotext(num)
-{
-    var start=document.querySelector(`#btn-start${num}`);
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Speech to text</title>
+</head>
+<body>
+	<button id="btn-start">Start Speaking</button>
+	<br>
+	<br>
+	<div class="words" contenteditable>
+	</div>
+</body>
+<script>
+	var start=document.querySelector('#btn-start');
 	var reset=document.querySelector('#btn-reset');
 	window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 	var recognition = new SpeechRecognition();
 	recognition.interimResults = false;
-	const ans = document.querySelector(`#ans${num}`);
+	const words = document.querySelector(".words");
 	var record='';
 	recognition.onresult = function(event)
 	{
@@ -14,11 +25,11 @@ function voicetotext(num)
 
 		console.log(command);
 		record=command;
-		ans.textContent= " "+record;
-    }
-    recognition.start();
+		words.textContent='Voice Input: '+record;
+	}
 
-	/*start.addEventListener("click", function(){
+	start.addEventListener("click", function(){
 		recognition.start();
-	});*/
-}
+	});
+</script>
+</html>
