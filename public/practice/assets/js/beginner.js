@@ -1,6 +1,6 @@
 function voicetotext(num)
 {
-    var start=document.querySelector(`#btn-start${num}`);
+	var start=document.querySelector(`#btn-start${num}`);
 	var reset=document.querySelector('#btn-reset');
 	window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 	var recognition = new SpeechRecognition();
@@ -15,8 +15,8 @@ function voicetotext(num)
 		console.log(command);
 		record=command;
 		ans.textContent= " "+record;
-    }
-    recognition.start();
+	}
+	recognition.start();
 
 	/*start.addEventListener("click", function(){
 		recognition.start();
