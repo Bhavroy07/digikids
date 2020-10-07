@@ -112,11 +112,14 @@ textarea
 	-moz-box-shadow: none;
 	box-shadow: none;
 
+	border-radius: 10px;
+
 	resize: none;
+	padding-left: 10px;
 }
 
 .hidden
 {
-	/* display: none; */
+	display: none;
 	font-size: 1.5rem;
 }

@@ -62,7 +62,7 @@
   <div class="container">
     <!--form action="http://localhost:3000/beginner/quiz" method="POST"-->
 
-    <div class="row ques q1">
+    <div class="row ques q1 ">
 
       <div class="col-lg-6 col-sm-12">
         <div class="image">
@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <div class="col-lg-6 col-sm-12">
+      <div class="col-lg-6 ">
         <div class="input">
           <button class="btn btn-success btn-start" id="btn-start1" onclick="voicetotext(1)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
           <div class="disp">
@@ -78,9 +78,13 @@
             <textarea rows="1" cols="20" class="ans ans1" id="ans1" contenteditable></textarea>
           </div>
         </div>
-        <div class="hidden">
-          <p> Correct answer: </p>
-          <textarea rows="1" cols="20" class="" id="cans1" ></textarea>
+        <div class="row hidden">
+          <div class="col-lg-6">
+            <p> Correct answer: </p>
+            <textarea readonly rows="1" cols="20">Apple</textarea>
+            <p> Accuracy: </p>
+            <textarea readonly rows="1" cols="8" id="cans1"></textarea>
+          </div>
         </div>
       </div>
       
@@ -95,7 +99,7 @@
         </div>
       </div>
 
-      <div class="col-lg-6 col-sm-12">
+      <div class="col-lg-6 ">
         <div class="input">
           <button class="btn btn-danger btn-start" id="btn-start2" onclick="voicetotext(2)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
           <div class="disp">
@@ -103,9 +107,13 @@
             <textarea rows="1" cols="20" class="ans ans1" id="ans2" contenteditable=""></textarea>
           </div>
         </div>
-        <div class="hidden">
-          <p> Correct answer: </p>
-          <textarea rows="1" cols="20" class="" id="cans2" ></textarea>
+        <div class="row hidden">
+          <div class="col-lg-6">
+            <p> Correct answer: </p>
+            <textarea readonly rows="1" cols="20">Dog</textarea>
+            <p> Accuracy: </p>
+            <textarea readonly rows="1" cols="8" id="cans2"></textarea>
+          </div>
         </div>
       </div>
 
@@ -119,7 +127,7 @@
         </div>
       </div>
 
-      <div class="col-lg-6 col-sm-12">
+      <div class="col-lg-6 ">
         <div class="input">
           <button class="btn btn-warning btn-start btn-reset"  id="btn-start3" onclick="voicetotext(3)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
           <div class="disp">
@@ -128,9 +136,13 @@
             <!--div class="ans ans1" id="ansu" contenteditable></div-->
           </div>
         </div>
-        <div class="hidden">
-          <p> Correct answer: </p>
-          <textarea rows="1" cols="20" class="" id="cans3" ></textarea>
+        <div class="row hidden">
+          <div class="col-lg-6">
+            <p> Correct answer: </p>
+            <textarea readonly rows="1" cols="20">Cat</textarea>
+            <p> Accuracy: </p>
+            <textarea readonly rows="1" cols="8" id="cans3"></textarea>
+          </div>
         </div>
       </div>
 
@@ -144,7 +156,7 @@
         </div>
       </div>
 
-      <div class="col-lg-6 col-sm-12">
+      <div class="col-lg-6 ">
         <div class="input">
           <button class="btn btn-primary btn-start" id="btn-start4" onclick="voicetotext(4)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
           <div class="disp">
@@ -152,9 +164,13 @@
             <textarea rows="1" cols="20" class="ans ans1" id="ans4" contenteditable></textarea>
           </div>
         </div>
-        <div class="hidden">
-          <p> Correct answer: </p>
-          <textarea rows="1" cols="20" class="" id="cans4" ></textarea>
+        <div class="row hidden">
+          <div class="col-lg-6">
+            <p> Correct answer: </p>
+            <textarea readonly rows="1" cols="20">Elephant</textarea>
+            <p> Accuracy: </p>
+            <textarea readonly rows="1" cols="8" id="cans4"></textarea>
+          </div>
         </div>
       </div>
 

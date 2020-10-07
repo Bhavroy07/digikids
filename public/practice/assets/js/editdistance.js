@@ -21,12 +21,20 @@ function getvalues()
        if(accu<=0)
        {
            var obj2=document.getElementById(`cans${i3+1}`)
-           obj2.textContent="You have 0% accuracy! Please try again."
+           obj2.textContent="0%"
        }
        else{
         var obj2=document.getElementById(`cans${i3+1}`)
-        obj2.textContent=`You have ${accu}% accuracy!`
+        obj2.textContent=`${accu}%`
        }
+    }
+
+    var x = document.querySelectorAll(".hidden");
+    var y = document.querySelectorAll(".ques");
+    for (var i = 0; i < x.length; i++) 
+    {
+        x[i].style.display = "block";
+        y[i].style.height = "500px";
     }
     
     
