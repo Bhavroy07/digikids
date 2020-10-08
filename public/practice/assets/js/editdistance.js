@@ -7,7 +7,7 @@ function getvalues()
         var objj=document.getElementById(`ans${i+1}`)
         arr[i]=objj.textContent
     }
-    var arr2=["apple","dog","cat","elephant"];
+    var arr2=["apple","dog","cat","elephant","fish","giraffe"];
     var arr3=new Array();
     for(var i2=0;i2<arr.length;i2++)
     {
