@@ -1,28 +1,28 @@
 const quizData = [
     {
         question : "Add :",
-        a : '5',
-        b : '6',
-        c : '7',
-        d : '8',
+        a : '5 (Five)',
+        b : '6 (Six)',
+        c : '7 (Seven)',
+        d : '8 (Eight)',
         image : 'quizimages/math1.jpg',
         correct : 'd'
     },
     {
         question : "Subtract :",
-        a : '4',
-        b : '7',
-        c : '1',
-        d : '2',
+        a : '4 (Four)',
+        b : '7 (Seven)',
+        c : '1 (One)',
+        d : '2 (Two)',
         image : 'quizimages/math2.jpg',
         correct : 'c'
     },
     {
         question : "Add :",
-        a : '4',
-        b : '7',
-        c : '6',
-        d : '5',
+        a : '4 (Four)',
+        b : '7 (Seven)',
+        c : '6 (Six)',
+        d : '5 (Five)',
         image : 'quizimages/math3.jpg',
         correct : 'b'
     }

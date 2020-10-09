@@ -1,15 +1,21 @@
+body
+{
+	font-family:'Zilla Slab';
+}
 .container
 {
-    margin-top:30px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+	margin-top:30px;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
 .btn-primary
 {
-    width: 200px;
+	width: 200px;
+	height: 40px;
+	font-size: 1.3em;
 }
 h2
 {
-    margin:20px;
+	margin:20px;
 }
