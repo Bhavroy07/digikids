@@ -7,7 +7,7 @@
 }
 .q1
 {
-	background-color: rgba(240,10,0,0.6);
+	background-color: rgba(240,10,0,0.8);
 	border: 3px solid rgba(0,200,20,0.5);
 	border-radius: 25px;
 	padding: 20px 20px;
@@ -16,7 +16,7 @@
 }
 .q2
 {
-	background-color: rgba(20,250,0,0.6);
+	background-color: rgba(20,250,0,0.8);
 	border: 3px solid rgba(0,20,220,0.5);
 	border-radius: 25px;
 	padding: 20px 20px;
@@ -25,7 +25,7 @@
 }
 .q3
 {
-	background-color: rgba(120,230,180,0.7);
+	background-color: rgba(120,230,180,0.8);
 	border: 3px solid rgba(200,10,20,0.5);
 	border-radius: 25px;
 	padding: 20px 20px;
@@ -34,7 +34,7 @@
 }
 .q4
 {
-	background-color: rgba(150,0,180,0.7);
+	background-color: rgba(150,0,180,0.8);
 	border: 3px solid rgba(10,120,20,0.5);
 	border-radius: 25px;
 	padding: 20px 20px;
@@ -43,7 +43,7 @@
 }
 .q5
 {
-	background-color: rgba(20,240,248,0.7);
+	background-color: rgba(20,240,248,0.8);
 	border: 3px solid rgba(150,20,220,0.5);
 	border-radius: 25px;
 	padding: 20px 20px;
@@ -52,7 +52,7 @@
 }
 .q6
 {
-	background-color: rgba(210,240,28,0.7);
+	background-color: rgba(210,240,28,0.8);
 	border: 3px solid rgba(150,20,220,0.5);
 	border-radius: 25px;
 	padding: 20px 20px;
