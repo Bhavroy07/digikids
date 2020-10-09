@@ -57,56 +57,88 @@
 	<div class="container question">
 		<div class="q1">
 			<p class="ques">
-				What is the capital of India?
+				In which direction does the sunrise?
 			</p>
-			<input row="1" col="30" class="ans" id="ans1">
+			<p> Type your answer here: <input type="text" class="ans" id="ans1"> </p>
+			<div class='disp'>
+				<p> Correct Answer: <input type="text" class="cans" value="East" readonly> </p>
+				<p> Score: <input type="text" class="cans" value="" readonly> </p>
+			</div>
 		</div>
 
 		<div class="q2">
 			<p class="ques">
-				What is the capital of India?
+				How many planets are in our solar system?
 			</p>
-			<input type="text" class="ans" id="ans2">
+			<p> Type your answer here: <input type="text" class="ans" id="ans2"> </p>
+			<div class='disp'>
+				<p> Correct Answer: <input type="text" class="cans" value="8 or Eight" readonly> </p>
+				<p> Score: <input type="text" class="cans" value="" readonly> </p>
+			</div>
 		</div>
 
 		<div class="q3">
 			<p class="ques">
-				What is the capital of India?
+				How many days are in a leap year?
 			</p>
-			<input type="text" class="ans" id="ans3">
+			<p> Type your answer here: <input type="text" class="ans" id="ans3"> </p>
+			<div class='disp'>
+				<p> Correct Answer: <input type="text" class="cans" value="366" readonly> </p>
+				<p> Score: <input type="text" class="cans" value="" readonly> </p>
+			</div>
 		</div>
 
 		<div class="q4">
 			<p class="ques">
-				What is the capital of India?
+				How many colors are there in a rainbow?
 			</p>
-			<input type="text" class="ans" id="ans4">
+			<p> Type your answer here: <input type="text" class="ans" id="ans4"> </p>
+			<div class='disp'>
+				<p> Correct Answer: <input type="text" class="cans" value="7 or Seven" readonly> </p>
+				<p> Score: <input type="text" class="cans" value="" readonly> </p>
+			</div>
 		</div>
 
 		<div class="q5">
 			<p class="ques">
-				What is the capital of India?
+				How many letters are there in the English alphabet?
 			</p>
-			<input type="text" class="ans" id="ans5">
+			<p> Type your answer here: <input type="text" class="ans" id="ans5"> </p>
+			<div class='disp'>
+				<p> Correct Answer: <input type="text" class="cans" value="26" readonly> </p>
+				<p> Score: <input type="text" class="cans" value="" readonly> </p>
+			</div>
 		</div>
 
 		<div class="q6">
 			<p class="ques">
-				What is the capital of India?
+				Which animal is called King of Jungle?
 			</p>
-			<input type="text" class="ans" id="ans6">
+			<p> Type your answer here: <input type="text" class="ans" id="ans6"> </p>
+			<div class='disp'>
+				<p> Correct Answer: <input type="text" class="cans" value="Lion" readonly> </p>
+				<p> Score: <input type="text" class="cans" value="" readonly> </p>
+			</div>
 		</div>
 
-		<input type="submit" class="btn btn-danger btn-submit">
+		<input type="submit" class="btn btn-danger btn-submit" onclick="getvalues()">
 	</div>
 	<p id="author">An initiation by Bhargav Roy, Nimit Jain and Dheeraj Rathee</p>
 
 	<!-- Optional JavaScript -->
-
+	<script type="text/javascript">
+		function getvalues()
+		{
+			var ar=document.querySelectorAll('.disp');
+			for(var i=0;i<ar.length;i++)
+			{
+				ar[i].style.display="block";
+			}
+		}
+	</script>
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="assets/js/listen.js"></script>
 </body>
 </html>
