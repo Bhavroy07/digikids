@@ -34,7 +34,6 @@ function getvalues()
     for (var i = 0; i < x.length; i++) 
     {
         x[i].style.display = "block";
-        y[i].style.height = "500px";
     }
     
     
