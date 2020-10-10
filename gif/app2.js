@@ -29,8 +29,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 var mongoose = require("mongoose");
-var Child = require('./models/user2')
-var func = require('./public/practice/assets/js/beginner')
+var Child = require('./user2')
+var func = require('../public/practice/assets/js/beginner')
 const dir=path.join(__dirname, "public")
 app.use(express.static(dir));
 app.set('views', __dirname + '/public');
