@@ -1,9 +1,8 @@
 body
 {
-	background-image: url("../images/img.jpeg");
-	background-size: cover;
+	background-image: url("../images/gif.gif");
+	background-size: 100% 130%;
 	background-repeat: no-repeat;
-
 }
 #sign
 {
@@ -38,7 +37,8 @@ button
 {
 	font-family: Zilla Slab;
 	text-align: center;
-	background-color: rgba(0,230,20,0.6);
+	background-color: rgba(240,30,200,0.5);
+	
 	margin: 1.25% auto;
 	width: 460px;
 	border-radius: 1.5em;
