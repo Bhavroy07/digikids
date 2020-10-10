@@ -5,35 +5,54 @@ function getvalues()
     for(var i=0;i<obj.length;i++)
     {
         var objj=document.getElementById(`ans${i+1}`)
-        arr[i]=objj.textContent;
+        arr[i]=objj.value;
     }
-    var arr2=["apple","dog","cat","elephant","fish","giraffe"];
+    //console.log(arr)
+    var arr4=new Array();
+    var arr2=[["east",""],["8","eight"],["366","three hundred sixty six"],["7","seven"],["26","twenty six"],["lion",""]];
     var arr3=new Array();
     for(var i2=0;i2<arr.length;i2++)
     {
     //console.log(LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2]))
-    arr3.push((LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2])));
+    //arr3.push((LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2])));
+    if(arr2[i2].length>1)
+    {
+    var dis1 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0])
+    var dis2 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][1])
+    if(dis1<dis2)
+    arr4.push(0)
+    else
+    arr4.push(1)
+
+    arr3.push(Math.min(dis1,dis2))
     }
+    else
+    {
+    arr3.push(LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0]))
+    arr4.push(0)
+    }
+    }
+    console.log(arr3)
+    console.log(arr2)
     for(var i3=0;i3<arr3.length;i3++)
     {
-        var diff=arr2[i3].length-arr3[i3]
-        var accu=(diff/arr2[i3].length)*100
+        var diff=arr2[i3][arr4[i3]].length-arr3[i3]
+        var accu=(diff/arr2[i3][arr4[i3]].length)*100
         if(accu<=0)
         {
             var obj2=document.getElementById(`cans${i3+1}`)
-            obj2.textContent="0%"
+            obj2.value="0%"
         }
         else{
             var obj2=document.getElementById(`cans${i3+1}`)
-            obj2.textContent=`${accu.toFixed(2)}%`
+            obj2.value=`${accu}%`
         }
     }
-    var x = document.querySelectorAll(".hidden");
-    var y = document.querySelectorAll(".ques");
-    for (var i = 0; i < x.length; i++) 
-    {
-        x[i].style.display = "block";
-    }
+    var ar=document.querySelectorAll('.disp');
+			for(var i=0;i<ar.length;i++)
+			{
+				ar[i].style.display="block";
+			}
 }
 LevenshteinDistance =  function(a1, b1){
     a=a1//.toLowerCase()

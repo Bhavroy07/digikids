@@ -14,7 +14,7 @@ function voicetotext(num)
 
 		console.log(command);
 		record=command;
-		ans.textContent= " "+record;
+		ans.textContent= record;
 	}
 	recognition.start();
 
