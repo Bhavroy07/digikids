@@ -65,7 +65,7 @@ function drawChart()
         ['Inaccuracy', total-accuracy]
         ]);
 
-    var options = {'title':'Overall Performance', 'width':525, 'height':450};
+    var options = {'title':'Overall Performance', 'width':535, 'height':450};
     var pie=document.getElementById('piechart');
     document.getElementById('chart').style.display="block";
     var chart = new google.visualization.PieChart(pie);

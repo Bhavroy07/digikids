@@ -60,10 +60,7 @@
 				In which direction does the sunrise?
 			</p>
 			<p> Type your answer here: <input type="text" class="ans" id="ans1"> </p>
-			<div class='disp'>
-				<p> Correct Answer: <input type="text" class="cans" value="East" readonly> </p>
-				<p> Score: <input type="text" class="cans" id="cans1" value="" > </p>
-			</div>
+			
 		</div>
 
 		<div class="q2">
@@ -71,10 +68,7 @@
 				How many planets are in our solar system?
 			</p>
 			<p> Type your answer here: <input type="text" class="ans" id="ans2"> </p>
-			<div class='disp'>
-				<p> Correct Answer: <input type="text" class="cans" value="8 or Eight" readonly> </p>
-				<p> Score: <input type="text" class="cans" id="cans2" value="" > </p>
-			</div>
+			
 		</div>
 
 		<div class="q3">
@@ -82,10 +76,7 @@
 				How many days are in a leap year?
 			</p>
 			<p> Type your answer here: <input type="text" class="ans" id="ans3"> </p>
-			<div class='disp'>
-				<p> Correct Answer: <input type="text" class="cans" value="366" readonly> </p>
-				<p> Score: <input type="text" class="cans" id="cans3" value="" > </p>
-			</div>
+			
 		</div>
 
 		<div class="q4">
@@ -93,10 +84,7 @@
 				How many colors are there in a rainbow?
 			</p>
 			<p> Type your answer here: <input type="text" class="ans" id="ans4"> </p>
-			<div class='disp'>
-				<p> Correct Answer: <input type="text" class="cans" value="7 or Seven" readonly> </p>
-				<p> Score: <input type="text" class="cans" id="cans4" value="" > </p>
-			</div>
+			
 		</div>
 
 		<div class="q5">
@@ -104,10 +92,7 @@
 				How many letters are there in the English alphabet?
 			</p>
 			<p> Type your answer here: <input type="text" class="ans" id="ans5"> </p>
-			<div class='disp'>
-				<p> Correct Answer: <input type="text" class="cans" value="26" readonly> </p>
-				<p> Score: <input type="text" class="cans" id="cans5" value="" > </p>
-			</div>
+			
 		</div>
 
 		<div class="q6">
@@ -115,18 +100,51 @@
 				Which animal is called King of Jungle?
 			</p>
 			<p> Type your answer here: <input type="text" class="ans" id="ans6"> </p>
-			<div class='disp'>
-				<p> Correct Answer: <input type="text" class="cans" value="Lion" readonly> </p>
-				<p> Score: <input type="text" class="cans" id="cans6" value="" > </p>
-			</div>
+			
 		</div>
 
-		<input type="submit" class="btn btn-danger btn-submit" onclick="getvalues()">
+		<input type="submit" class="btn btn-danger btn-submit" onclick="draw()">
 	</div>
+
+	<div id='chart'>
+		<h2 style="font-family: 'Acme'; letter-spacing: 1.75px;"><u>REPORT  CARD</u> </h2>
+		<br>
+		<div>
+			<p>
+				Problem 1: <input type="text" readonly class="score" value='' id='sc1'>
+			</p>
+			<p>
+				Problem 2: <input type="text" readonly class="score" value='' id='sc2'>
+			</p>
+			<p>
+				Problem 3: <input type="text" readonly class="score" value='' id='sc3'>
+			</p>
+			<p>
+				Problem 4: <input type="text" readonly class="score" value='' id='sc4'>
+			</p>
+			<p>
+				Problem 5: <input type="text" readonly class="score" value='' id='sc5'>
+			</p>
+			<p>
+				Problem 6: <input type="text" readonly class="score" value='' id='sc6'>
+			</p>
+		</div>
+		<div id="piechart"></div>
+		<br>
+		<strong>
+			<p>
+				Remark: <span id="remark"></span>
+			</p>
+		</strong>
+		<br>
+		<a href="expert.html" class="btn btn-success btn-chart"> Retry </a>
+		<a href="../landing.html" class="btn btn-danger btn-chart"> Home Page </a>
+	</div>
+
 	<p id="author">An initiation by Bhargav Roy, Nimit Jain and Dheeraj Rathee</p>
 
 	<!-- Optional JavaScript -->
-
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript" src="assets/js/editdistance_forexpert.js"></script>
 	
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

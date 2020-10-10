@@ -1,4 +1,10 @@
-function getvalues()
+function draw()
+{
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+}
+
+function drawChart()
 {
     var obj=document.querySelectorAll('.ans');
     var arr=new Array();
@@ -7,53 +13,83 @@ function getvalues()
         var objj=document.getElementById(`ans${i+1}`)
         arr[i]=objj.value;
     }
-    //console.log(arr)
     var arr4=new Array();
     var arr2=[["east",""],["8","eight"],["366","three hundred sixty six"],["7","seven"],["26","twenty six"],["lion",""]];
     var arr3=new Array();
     for(var i2=0;i2<arr.length;i2++)
     {
-    //console.log(LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2]))
-    //arr3.push((LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2])));
-    if(arr2[i2].length>1)
-    {
-    var dis1 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0])
-    var dis2 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][1])
-    if(dis1<dis2)
-    arr4.push(0)
-    else
-    arr4.push(1)
+        if(arr2[i2].length>1)
+        {
+            var dis1 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0])
+            var dis2 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][1])
+            if(dis1<dis2)
+                arr4.push(0)
+            else
+                arr4.push(1)
 
-    arr3.push(Math.min(dis1,dis2))
+            arr3.push(Math.min(dis1,dis2))
+        }
+        else
+        {
+            arr3.push(LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0]))
+            arr4.push(0)
+        }
     }
-    else
-    {
-    arr3.push(LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0]))
-    arr4.push(0)
-    }
-    }
-    console.log(arr3)
-    console.log(arr2)
+    var accuracy=0,total=0;
+    var score=document.querySelectorAll('.score');
     for(var i3=0;i3<arr3.length;i3++)
     {
-        var diff=arr2[i3][arr4[i3]].length-arr3[i3]
-        var accu=(diff/arr2[i3][arr4[i3]].length)*100
-        if(accu<=0)
-        {
-            var obj2=document.getElementById(`cans${i3+1}`)
-            obj2.value="0%"
-        }
-        else{
-            var obj2=document.getElementById(`cans${i3+1}`)
-            obj2.value=`${accu}%`
-        }
+        var diff=Math.abs(arr2[i3][arr4[i3]].length-arr3[i3]);
+        var percent=0;
+        if(arr2[i3][arr4[i3]].length>0) percent=(diff/arr2[i3][arr4[i3]].length)*100;
+        
+        score[i3].value=`${percent.toFixed(2)}%`;
+        total+=arr2[i3][arr4[i3]].length;
+        accuracy+=diff;
     }
-    var ar=document.querySelectorAll('.disp');
-			for(var i=0;i<ar.length;i++)
-			{
-				ar[i].style.display="block";
-			}
+    var remark=document.querySelector('#remark');
+    if(accuracy/total > 0.8)
+    {
+        remark.textContent="Well Done!";
+        remark.style.color="Green";
+    }
+    else if(accuracy/total > 0.6)
+    {
+        remark.textContent="Good Job!\n But can do better.";
+        remark.style.color="rgba(0,200,0,0.7)";
+    }
+    else if(accuracy/total > 0.4)
+    {
+        remark.textContent="Improvement needed.";
+        remark.style.color="rgba(150,150,0,0.7)";
+    }
+    else if(accuracy/total > 0.2)
+    {
+        remark.textContent="Can do better.";
+        remark.style.color="rgba(200,0,0,0.7)";
+    }
+    else
+    {
+        remark.textContent="Practice more!\n There is always a scope for improvement :)";
+        remark.style.color="Red";
+    }
+    
+
+    document.querySelector(".container").style.display='none';
+
+    var data = google.visualization.arrayToDataTable([
+        ['A','B'],
+        ['Accuracy', accuracy],
+        ['Inaccuracy', total-accuracy]
+        ]);
+
+    var options = {'title':'Overall Performance', 'width':535, 'height':450};
+    var pie=document.getElementById('piechart');
+    document.getElementById('chart').style.display="block";
+    var chart = new google.visualization.PieChart(pie);
+    chart.draw(data, options);
 }
+
 LevenshteinDistance =  function(a1, b1){
     a=a1//.toLowerCase()
     b=b1//.toLowerCase()
