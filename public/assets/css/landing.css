@@ -1,7 +1,7 @@
 body
 {
-	background-image: url("../images/gif.gif");
-	background-size: 100% 130%;
+	background-image: url("../images/plane.gif");
+	background-size: 100% 140%;
 	background-repeat: no-repeat;
 }
 .logo
@@ -20,7 +20,7 @@ body
 #tagline
 {
 	font-family: 'Courgette';
-	color: white;
+	color: black;
 	font-size: 2.8em;
 }
 .options
@@ -83,5 +83,5 @@ body
 	margin-top: 5%;
 	font-family: Cookie;
 	text-align: center;
-	color: white;
+	color: black;
 }

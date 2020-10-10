@@ -25,7 +25,7 @@ form
 	font-family: Zilla Slab;
 	text-align: center;
 	background-color: rgba(240,30,200,0.5);
-	margin: 1.25% auto;
+	margin: 3.5% auto;
 	width: 460px;
 	border-radius: 1.5em;
 	box-shadow: 3px 3px 2.5px 1.5px rgba(0, 0, 0, 0.2);
@@ -51,8 +51,8 @@ input:focus{
 button
 {
 	width: 200px;
-	margin-top: 7%;
-	margin-bottom: 10%;
+	margin-top: 10%;
+	margin-bottom: 15%;
 	border-radius: 0.5em;
 	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.4);
 }
