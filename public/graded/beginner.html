@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/practice.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/beginner.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+
+	<!--script type="text/javascript" src="assets/js/beginner.js"></script-->
+
+
+	<title>DigiKids - Practice</title>
+</head>
+<body>
+	<!--Navbar-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="../landing.html"> DigiKids </a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active disabled">
+					<a class="nav-link" href="http://localhost:3000/practice/beginner"> Beginner <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="http://localhost:3000/practice/intermediate"> Intermediate </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="http://localhost:3000/practice/expert"> Expert </a>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Switch Mode
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="http://localhost:3000/listen/beginner"> Listen <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i></a>
+						<a class="dropdown-item" href="http://localhost:3000/Play"> Play <i class="fa fa-gamepad" aria-hidden="true"></i> </a>
+					</div>
+				</li>
+
+			</ul>
+
+			<a href="http://localhost:3000/logout" class="btn btn-outline-dark sign-out"> Sign out </a>
+
+		</div>
+	</nav>
+
+	<!--Page Content-->
+
+	<div class="container">
+		<!--form action="http://localhost:3000/beginner/quiz" method="POST"-->
+
+		<div class="row ques q1 ">
+
+			<div class="col-md-6 col-sm-12">
+				<div class="image">
+					<img src="images/apple.jpg" class="img-thumbnail">
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="input">
+					<button class="btn btn-primary btn-start" id="btn-start1" onclick="voicetotext(1)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
+					<div class="disp">
+						<p> Your answer: </p>
+						<textarea rows="1" cols="20" class="ans ans1" id="ans1" contenteditable></textarea>
+					</div>
+
+				</div>
+			</div>
+
+
+		</div>
+
+		<div class="row ques q2">
+
+			<div class="col-md-6 col-sm-12">
+				<div class="image">
+					<img src="images/dog.jpg" class="img-thumbnail">
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="input">
+					<button class="btn btn-danger btn-start" id="btn-start2" onclick="voicetotext(2)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
+					<div class="disp">
+						<p> Your answer: </p>
+						<textarea rows="1" cols="20" class="ans ans1" id="ans2" contenteditable=""></textarea>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row ques q3">
+
+			<div class="col-md-6 col-sm-12">
+				<div class="image">
+					<img src="images/cat.jpg" class="img-thumbnail">
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="input">
+					<button class="btn btn-warning btn-start btn-reset"  id="btn-start3" onclick="voicetotext(3)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
+					<div class="disp">
+						<p> Your answer: </p>
+						<textarea rows="1" cols="20" class="ans ans1" id="ans3" contenteditable></textarea>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row ques q4">
+
+			<div class="col-md-6 col-sm-12">
+				<div class="image">
+					<img src="images/elephant.jpg" class="img-thumbnail">
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="input">
+					<button class="btn btn-primary btn-start" id="btn-start4" onclick="voicetotext(4)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
+					<div class="disp">
+						<p> Your answer: </p>
+						<textarea rows="1" cols="20" class="ans ans1" id="ans4" contenteditable></textarea>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row ques q5">
+
+			<div class="col-md-6 col-sm-12">
+				<div class="image">
+					<img src="images/fish.jpg" class="img-thumbnail">
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="input">
+					<button class="btn btn-danger btn-start" id="btn-start5" onclick="voicetotext(5)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
+					<div class="disp">
+						<p> Your answer: </p>
+						<textarea rows="1" cols="20" class="ans ans1" id="ans5" contenteditable></textarea>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row ques q6">
+
+			<div class="col-md-6 col-sm-12">
+				<div class="image">
+					<img src="images/giraffe.jpg" class="img-thumbnail">
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="input">
+					<button class="btn btn-warning btn-start" id="btn-start6" onclick="voicetotext(6)"><i class="fa fa-volume-up" aria-hidden="true"></i> Start Speaking </button>
+					<div class="disp">
+						<p> Your answer: </p>
+						<textarea rows="1" cols="20" class="ans ans1" id="ans6" contenteditable></textarea>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+		<!--/form-->
+
+		<input type="submit" class="btn btn-info btn-submit" onclick="draw()">
+	</div>
+
+
+
+	<div id='chart'>
+		<h2 style="font-family: 'Acme'"><u>REPORT  CARD</u> </h2>
+		<br>
+		<div>
+			<p>
+				Problem 1: <input type="text" readonly class="score" value='' id='sc1'>
+			</p>
+			<p>
+				Problem 2: <input type="text" readonly class="score" value='' id='sc2'>
+			</p>
+			<p>
+				Problem 3: <input type="text" readonly class="score" value='' id='sc3'>
+			</p>
+			<p>
+				Problem 4: <input type="text" readonly class="score" value='' id='sc4'>
+			</p>
+			<p>
+				Problem 5: <input type="text" readonly class="score" value='' id='sc5'>
+			</p>
+			<p>
+				Problem 6: <input type="text" readonly class="score" value='' id='sc6'>
+			</p>
+		</div>
+		<div id="piechart"></div>
+		<strong>
+			<p>
+				Remark: <span id="remark"></span>
+			</p>
+		</strong>
+		<a href="beginner.html" class="btn btn-success btn-chart"> Retry </a>
+		<a href="intermediate.html" class="btn btn-danger btn-chart"> Intermediate Quiz </a>
+	</div>
+
+	<p id="author">An initiation by Bhargav Roy, Nimit Jain and Dheeraj Rathee</p>
+
+	<!-- Optional JavaScript -->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="assets/js/beginner.js"></script>
+	<script type="text/javascript" src="assets/js/editdistance.js"></script>
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+</html>

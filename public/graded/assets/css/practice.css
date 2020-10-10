@@ -1,0 +1,74 @@
+body
+{
+	background: #1c92d2;  
+	background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);  
+	background: linear-gradient(to right, #f2fcfe, #1c92d2); 
+	background: url("../images/back.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-size: 100% 100%;
+}
+.navbar
+{
+	font-family: 'Zilla Slab';
+	font-size: 1.2em;
+}
+.navbar-brand
+{
+	font-family: Acme;
+	color: white;
+	font-size: 1.5em;
+}
+.nav-item
+{
+	width: 150px;
+	margin:0 3%;
+	padding: 0 2%;
+	text-align: center;
+}
+.nav-item:hover
+{
+	border: 1px solid blue;
+	border-radius: 0.5em;
+	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.4);
+}
+.dropdown-item:hover
+{
+	border: 1px solid purple;
+	border-radius: 0.5em;
+	box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.4);
+}
+.active
+{
+	border: 1px solid blue;
+	border-radius: 0.5em;
+	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.4);
+}
+.sign-out
+{
+	margin-left: 30%;
+	border-radius: 0.75em;
+}
+
+.vid-style
+{
+	width: 250px;
+	height: 250px;
+	margin: 6% 12%;
+	padding: 5px 0;
+	border: 2px solid rgba(10,200,10,0.7);
+	border-radius: 0.4em;
+	background: white;
+}
+
+.vid-style:focus
+{
+	outline: none;
+}
+#author
+{
+	margin-top: 5%;
+	font-family: Cookie;
+	text-align: center;
+}
