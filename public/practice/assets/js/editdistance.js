@@ -13,33 +13,27 @@ function getvalues()
     {
     //console.log(LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2]))
     arr3.push((LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2])));
-}
-for(var i3=0;i3<arr3.length;i3++)
-{
- var diff=arr2[i3].length-arr3[i3]
- var accu=(diff/arr2[i3].length)*100
- if(accu<=0)
- {
-     var obj2=document.getElementById(`cans${i3+1}`)
-     obj2.textContent="0%"
- }
- else{
-    var obj2=document.getElementById(`cans${i3+1}`)
-    obj2.textContent=`${accu}%`
-}
-}
-
-var x = document.querySelectorAll(".hidden");
-var y = document.querySelectorAll(".ques");
-for (var i = 0; i < x.length; i++) 
-{
-    x[i].style.display = "block";
-    y[i].style.height = "500px";
-}
-
-
-
-
+    }
+    for(var i3=0;i3<arr3.length;i3++)
+    {
+        var diff=arr2[i3].length-arr3[i3]
+        var accu=(diff/arr2[i3].length)*100
+        if(accu<=0)
+        {
+            var obj2=document.getElementById(`cans${i3+1}`)
+            obj2.textContent="0%"
+        }
+        else{
+            var obj2=document.getElementById(`cans${i3+1}`)
+            obj2.textContent=`${accu}%`
+        }
+    }
+    var x = document.querySelectorAll(".hidden");
+    var y = document.querySelectorAll(".ques");
+    for (var i = 0; i < x.length; i++) 
+    {
+        x[i].style.display = "block";
+    }
 }
 LevenshteinDistance =  function(a1, b1){
     a=a1//.toLowerCase()
