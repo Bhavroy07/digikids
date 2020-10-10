@@ -76,7 +76,120 @@ sound: new Howl(
     src:['sounds/strike.mp3']
 }
 )
-}
+},
+p:{
+    sound: new Howl(
+    {
+        src:['sounds/glimmer.mp3']
+    }
+    )
+    },
+    y:{
+        sound: new Howl(
+        {
+            src:['sounds/corona.mp3']
+        }
+        )
+        },
+        u:{
+            sound: new Howl(
+            {
+                src:['sounds/flash-1.mp3']
+            }
+            )
+            },
+        i:{
+            sound: new Howl(
+            {
+                src:['sounds/pinwheel.mp3']
+            }
+            )
+            },
+        o:{
+            sound: new Howl(
+            {
+                src:['sounds/piston-1.mp3']
+            }
+            )
+            },
+        h:{
+            sound: new Howl(
+            {
+                src:['sounds/prism-1.mp3']
+            }
+            )
+            },
+        j:{
+            sound: new Howl(
+            {
+                src:['sounds/splits.mp3']
+            }
+            )
+            },
+        k:{
+            sound: new Howl(
+            {
+                src:['sounds/timer.mp3']
+            }
+            )
+            },
+        l:{
+            sound: new Howl(
+            {
+                src:['sounds/squiggle.mp3']
+            }
+            )
+            },
+        z:{
+            sound: new Howl(
+            {
+                src:['sounds/zig-zag.mp3']
+            }
+            )
+            },
+        x:{
+            sound: new Howl(
+            {
+                src:['sounds/wipe.mp3']
+            }
+            )
+            },
+        c:{
+            sound: new Howl(
+            {
+                src:['sounds/veil.mp3']
+            }
+            )
+            },
+        v:{
+            sound: new Howl(
+            {
+                src:['sounds/prism-3.mp3']
+            }
+            )
+            },
+        b:{
+            sound: new Howl(
+            {
+                src:['sounds/piston-3.mp3']
+            }
+            )
+            },
+        n:{
+            sound: new Howl(
+            {
+                src:['sounds/glimmer.mp3']
+            }
+            )
+            },
+        m:{
+            sound: new Howl(
+            {
+                src:['sounds/clay.mp3']
+            }
+            )
+            }
+
 
 };
 
@@ -84,7 +197,7 @@ sound: new Howl(
 
 function onKeyDown(event) 
 {
-    if (event.key=='a') 
+    if (event.key=='a' || event.key=='o') 
     {
         var color = Math.floor(Math.random() * 16777216).toString(16);
         color = '#000000'.slice(0, -color.length) + color;
@@ -108,7 +221,7 @@ function onKeyDown(event)
         }
     }
 
-    if(event.key=='s')
+    if(event.key=='s' || event.key=='i')
     {
         var color = Math.floor(Math.random() * 16777216).toString(16);
         color = '#000000'.slice(0, -color.length) + color;
@@ -223,7 +336,7 @@ function onKeyDown(event)
             }
         }
     }   
-    if(event.key=='f')
+    if(event.key=='f' || event.key=='h')
     {
         var path = new Path.Rectangle
         (
@@ -267,7 +380,7 @@ function onKeyDown(event)
         }
     }
 
-    if(event.key=='g')
+    if(event.key=='g' || event.key=='j' || event.key=='b')
     {
         var path= new Path.Rectangle(
         {
@@ -291,7 +404,7 @@ function onKeyDown(event)
             path.remove();
         }
     }
-    if(event.key=='e')
+    if(event.key=='e' || event.key=='v' || event.key=='y')
     {
         var path= new Path.Rectangle(
         {
@@ -316,7 +429,7 @@ function onKeyDown(event)
         }
     }
 
-    if(event.key=='t')
+    if(event.key=='t' || event.key=='c' || event.key=='u')
     {
         var path= new Path.Rectangle(
         {
@@ -341,7 +454,7 @@ function onKeyDown(event)
         }
     }
 
-    if(event.key=='q')
+    if(event.key=='q' || event.key=='n' || event.key=='x')
     {
         var amount = 5;
 
@@ -400,12 +513,14 @@ if(event.count>50)
 }
 }
 
-if(event.key=='w')
+if(event.key=='w' || event.key=='m' || event.key=='z')
 {
+    var color = Math.floor(Math.random() * 16777216).toString(16);
+    color = '#000000'.slice(0, -color.length) + color;
     var path = new Path.Circle(
     {
-        radius : 30,
-        fillColor : 'yellow',
+        radius : 20,
+        fillColor : color,
         strokeColor : 'black',
         strokeWidth : 0 ,
         center : [500 , 300]
@@ -426,7 +541,7 @@ if(event.key=='w')
     }
 }
 
-if(event.key=='r')
+if(event.key=='r' || event.key=='p' || event.key=='l')
 {
 
     var color = Math.floor(Math.random() * 16777216).toString(16);
@@ -454,6 +569,15 @@ if(event.key=='r')
         }
     }
 }
+
+
+
+
+
+
+
+
+
 }
 <!-- alert(view.size);  this will give an alert showing the max width and max height of the screen-->
 <!-- alert(view.center); this will give an alert showing the center of the screen-->
