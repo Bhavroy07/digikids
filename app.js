@@ -6,7 +6,7 @@ var express = require("express");
 var session=require('express-session')
 var path = require('path');
 var app = express();
-var port = 3000;
+var port = process.env.PORT||3000;
 const fs=require('fs')
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -178,6 +178,12 @@ app.get('/practice/:id',authenticateToken,function(req,res){
   
 
   res.sendFile(dir+`/practice/${ttt}.html`)
+})
+
+//get request to graded pages
+app.get('/graded/:id',authenticateToken,function(req,res){
+  const ttt=req.params.id
+  res.sendFile(dir+`/graded/${ttt}.html`)
 })
 
 //play mode request
