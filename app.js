@@ -180,6 +180,12 @@ app.get('/practice/:id',authenticateToken,function(req,res){
   res.sendFile(dir+`/practice/${ttt}.html`)
 })
 
+//get request to graded pages
+app.get('/graded/:id',authenticateToken,function(req,res){
+  const ttt=req.params.id
+  res.sendFile(dir+`/graded/${ttt}.html`)
+})
+
 //play mode request
 app.get('/Play',authenticateToken,function(req,res){
   res.sendFile(dir+'/play/game.html')
