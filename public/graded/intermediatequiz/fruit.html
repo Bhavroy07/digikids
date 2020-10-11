@@ -61,7 +61,7 @@
         <div class="quiz" id="quiz">
           <div class="quiz-header">
               <h2 id="question">Question text</h2>
-      
+              <hr>
               <div class="row">
                   <div class="col-md-6 col-sm-12">
                       <div id="image"></div>
@@ -88,7 +88,7 @@
                   </div>
               </div>
           </div>
-          <button id="submit">Submit</button>
+          <button class="submit" id="submit">Submit</button>
         </div>
 
       </div>
@@ -99,7 +99,41 @@
       <div class="col-md-2 col-sm-1"></div>
       <div class="col-md-8 col-sm-10">
         <div class="result" id="res">
-
+          <div class="container">
+            <h1> 
+              <span class="badge badge-dark">REPORT CARD</span>
+            </h1>
+            <hr>
+            <div class="ques">
+              <p>
+                  Problem 1:
+                  <span class="badge badge-success" id="correct0">Correct Answer</span>
+                  <span class="badge badge-danger" id="wrong0">Wrong Answer</span>
+              </p>
+            </div>
+            <hr>
+            <div class="ques">
+              <p>
+                  Problem 2:
+                  <span class="badge badge-success" id="correct1">Correct Answer</span>
+                  <span class="badge badge-danger" id="wrong1">Wrong Answer</span>
+              </p>
+            </div>
+              <hr>
+              <div class="ques">
+                <p>
+                    Problem 3:
+                    <span class="badge badge-success" id="correct2">Correct Answer</span>
+                    <span class="badge badge-danger" id="wrong2">Wrong Answer</span>
+                </p>
+              </div>
+              <hr>
+              <p>
+                Remarks :<span id="remark"></span>
+              </p>
+              <hr>
+              <button class="btn btn-warning" onclick="location.reload()" >Retry</button>
+          </div>
         </div>
       </div>
       <div class="col-md-2 col-sm-1"></div>

@@ -105,63 +105,47 @@ btn.addEventListener('click',()=>{
         else
         {
             quiz.style.display='none';
-            result.innerHTML=`
-            <div class="container">
-                <h1> <span class="badge badge-dark">Your Score :${score} / ${quizData.length}</span></h1>
-                <hr>
-                <div class="ques">
-                    <h2> Q1. ${quizData[0].question}</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img class="img-thumbnail" src="${quizData[0].image}">
-                    </div>
-                    <div class="col-md-8 text-left">
-                        <p>Correct Answer </p>
-                        <span class="badge badge-success" style="font-size:25px">${quizData[0].ans}</span>
-                        <p>Your Answer </p>
-                        <span class="badge badge-info" style="font-size:25px">${quizData[0][string[0]]}</span>
-                    </div>
-                </div>
-                <hr>
+            result.style.display='block';
+            
+            var remark = document.getElementById('remark');
 
-                <div class="ques">
-                    <h2> Q2. ${quizData[1].question}</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img class="img-thumbnail" src="${quizData[1].image}">
-                    </div>
-                    <div class="col-md-8 text-left">
-                        <p>Correct Answer </p>
-                        <span class="badge badge-success" style="font-size:25px">${quizData[1].ans}</span>
-                        <p>Your Answer </p>
-                        <span class="badge badge-info" style="font-size:25px">${quizData[1][string[1]]}</span>
-                    </div>
-                </div>
-                <hr>
+            if(score==quizData.length)
+            {
+                remark.textContent="Well Done!";
+                remark.style.color="Green";
+            }
+            else if(score==quizData.length-1)
+            {
+                remark.textContent="Good Job!\n But can do better.";
+                remark.style.color="rgba(0,200,0,0.7)";
+            }
+            else if(score==quizData.length-2)
+            {
+                remark.textContent="Improvement needed.";
+                remark.style.color="rgba(150,150,0,0.7)";
+            }
+            else
+            {
+                remark.textContent="Practice more!\n There is always a scope for improvement :)";
+                remark.style.color="Red";
+            }
 
-                <div class="ques">
-                    <h2> Q3. ${quizData[2].question}</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img class="img-thumbnail" src="${quizData[2].image}">
-                    </div>
-                    <div class="col-md-8 text-left">
-                        <p>Correct Answer </p>
-                        <span class="badge badge-success" style="font-size:25px">${quizData[2].ans}</span>
-                        <p>Your Answer </p>
-                        <span class="badge badge-info" style="font-size:25px">${quizData[2][string[2]]}</span>
-                    </div>
-                </div>
-                <hr>
-                <div>
-                <button class="btn btn-danger" onclick="location.reload()" >Retry</button>
-                </div>
-
-            </div>
-            `;
+            for(var i=0;i<quizData.length;i++)
+            {
+                if(quizData[i].ans===quizData[i][string[i]])
+                {
+                    var t = document.getElementById('wrong'+i);
+                    console.log(t);
+                    
+                    t.style.display='none';   
+                }
+                else
+                {
+                    var t = document.getElementById('correct'+i);
+                    t.style.display='none'; 
+                    console.log(t);
+                }
+            }
         }
     }
 });
