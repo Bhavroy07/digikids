@@ -41,11 +41,11 @@ function getvalues()
         if(accu<=0)
         {
             var obj2=document.getElementById(`cans${i3+1}`)
-            obj2.value="0%"
+            obj2.value="0.00%"
         }
         else{
             var obj2=document.getElementById(`cans${i3+1}`)
-            obj2.value=`${accu}%`
+            obj2.value=`${accu.toFixed(2)}%`
         }
     }
     var ar=document.querySelectorAll('.disp');
