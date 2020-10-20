@@ -1,305 +1,232 @@
-require('dotenv').config()
-
-var isloggedIn = false
-
 var express = require("express");
-var session=require('express-session')
-var path = require('path');
+var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
+var morgan = require("morgan");
+var User = require("./models/User");
+const fs = require('fs')
+const path = require('path')
+
 var app = express();
-var port = process.env.PORT||3000;
-const fs=require('fs')
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken')
-
-/*app.use(session({
-    //cookieName: 'session',
-    secret: 'eg[isfd-8yF9-7w2315df{}+Ijsli;;to8',
-    //duration: 30 * 60 * 1000,
-    //activeDuration: 5 * 60 * 1000,
-    //httpOnly:true,
-    //secure: true,
-    //ephemeral: true,
-    saveUninitialized:false,
-    resave:false
-  }));
-  app.use(passport.initialize())
-  app.use(passport.session())*/
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
-
-
-
-var mongoose = require("mongoose");
-var User = require('./models/user')
-var Q1 = require('./models/question1')
-var Q3 = require('./models/question3')
-var Q2 = require('./models/question2')
-var func = require('./public/practice/assets/js/beginner')
 const dir=path.join(__dirname, "public")
 app.use(express.static(dir));
-app.set('views', __dirname + '/public');
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-mongoose.Promise = global.Promise;
-//database connection
-mongoose.connect("mongodb://localhost:27017/Child_details",{
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true
-});
 
+// set our application port
+app.set("port", 3000);
 
-/*app.use(function(req, res, next) {
-    if (req.session && req.session.user) {
-      User.findOne({ email: req.session.user.email }, function(err, user) {
-        if (user) {
-          req.user = user;
-          delete req.user.password; // delete the password from the session
-          req.session.user = user;  //refresh the session value
-          res.locals.user = user;
-        }
-        // finishing processing the middleware and run the route
-        next();
-      });
-    } else {
-      next();
-    }
-  });*/
+// set morgan to log info about our requests for development use.
+app.use(morgan("dev"));
 
+// initialize body-parser to parse incoming parameters requests to req.body
+app.use(bodyParser.urlencoded({ extended: true }));
 
-/*function requireLogin (req, res, next) {
-    if (!req.user) {
-      res.redirect('/');
-    } else {
-      next();
-    }
-  };*/
+// initialize cookie-parser to allow us access the cookies stored in the browser.
+app.use(cookieParser());
 
+// initialize express-session to allow us track the logged-in user across sessions.
+app.use(
+  session({
+    key: "user_sid",
+    secret: "somerandonstuffs",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 600000,
+    },
+  })
+);
 
-
-
-//index page on starting local host
-app.get("/", (req, res) => {
-    //res.sendFile(path.join(dir,"index.html")); 
-    res.render("index.html")
-    
-});
-
-
-//sign up
-app.post("/user_save",(req,res)=>{
-    User.findOne({'email':req.body.email},(err,user)=>{
-        if(user) return res.status(400).json({message:'account already exists with this email'})
-    })
-    if(req.body.confirmPassword!==req.body.password)
-    res.send('passwords do not match')
-    else
-    {
-    var myData = new User(req.body);
-    myData.save()
-        .then(item => {
-            //res.sendFile(dir+"/index.html");
-            res.render('index.html')
-        })
-        .catch(err => {
-            res.status(400).send("Unable to save to database");
-        });
-    }
-})
-
-/*function checkAuthenticated(req,res,next){
-  if(req.isAuthenticated()){
-    return next()
+// This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
+// This usually happens when you stop your express server after login, your cookie still remains saved in the browser.
+app.use((req, res, next) => {
+  if (req.cookies.user_sid && !req.session.user) {
+    res.clearCookie("user_sid");
   }
-  res.redirect('/')
-}*/
+  next();
+});
 
+// middleware function to check for logged-in users
+var sessionChecker = (req, res, next) => {
+  if (req.session.user && req.cookies.user_sid) {
+    res.redirect("/landing");
+  } else {
+    next();
+  }
+};
 
-//login code
-app.post('/users/login', function(req, res) {
-    User.findOne({ email: req.body.email }, function(err, user) {
-      if (!user) {
-        res.send( { error: 'Invalid email or password.' });
-        
+// route for Home-Page
+app.get("/", sessionChecker, (req, res) => {
+  res.redirect("/login");
+});
+
+// route for user signup
+app
+  .route("/signup")
+  .get(sessionChecker, (req, res) => {
+    res.sendFile(dir + "/signup.html");
+  })
+  .post((req, res) => {
+
+    var user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      gender:req.body.gender,
+      password:req.body.password,
+    });
+    user.save((err, docs) => {
+      if (err) {
+        res.redirect("/signup");
       } else {
-        user.comparePassword(req.body.password,(err,isMatch)=>
-        {
-            if(err) throw err
-            if(!isMatch){
-              res.status(400).json({message:'incorrect password'})
-              
-            }
-            else{
-            //req.session.user = user;
-            //const accessToken=jwt.sign(user.email,process.env.ACCESS_TOKEN_SECRET)
-            /*res.json({
-               accessToken
-            })*/
-            //res.redirect('/landing.html');
-            isloggedIn=true
-            res.redirect('/landing.html')
-            }
-         })
-       }
+          console.log(docs)
+        req.session.user = docs;
+        res.redirect("/landing");
+      }
     });
   });
 
-  /*app.post('/users/login',passport.authenticate('local',{
-    successRedirect:'/landing',
-    failureRedirect:'/'
-  }))*/
+// route for user Login
+app
+  .route("/login")
+  .get(sessionChecker, (req, res) => {
+    res.sendFile(dir + "/login.html");
+  })
+  .post(async (req, res) => {
+    var email = req.body.email,
+      password = req.body.password;
+
+      try {
+        var user = await User.findOne({ email: email }).exec();
+        if(!user) {
+            res.redirect("/login");
+        }
+        user.comparePassword(password, (error, match) => {
+            if(!match) {
+              res.redirect("/login");
+            }
+        });
+        req.session.user = user;
+        res.redirect("/landing");
+    } catch (error) {
+      console.log(error)
+    }
+  });
 
 
-
-//get request to the video streaming pages
-app.get('/listen/:id',authenticateToken,function(req,res){
-    const tt=req.params.id
-    res.sendFile(dir+`/listen/${tt}.html`)
-})
+// route for user's dashboard
+app.get("/landing", (req, res) => {
+  if (req.session.user && req.cookies.user_sid) {
+    res.sendFile(dir + "/landing.html");
+  } else {
+    res.redirect("/login");
+  }
+});
 
 //get request to the practice pages
-app.get('/practice/:id',authenticateToken,function(req,res){
+app.get('/practice/:id',function(req,res){
   const ttt=req.params.id
-  /*Q2.findOne({answer:"apple"},function(err,user){
-    if(err)
-    console.log("kata")
-    if(user)
+  if(req.session.user && req.cookies.user_sid)
     {
-      //console.log(user.question)
-      var st = func(user)
-      console.log(st)
       res.sendFile(dir+`/practice/${ttt}.html`)
     }
-  })*/
-  
-
-  res.sendFile(dir+`/practice/${ttt}.html`)
+    else{
+      res.redirect('/login')
+    }
 })
 
-//get request to graded pages
-app.get('/graded/:id',authenticateToken,function(req,res){
+//graded mode pages
+app.get('/graded/:id',function(req,res){
   const ttt=req.params.id
-  res.sendFile(dir+`/graded/${ttt}.html`)
+  if(req.session.user && req.cookies.user_sid)
+    {
+      res.sendFile(dir+`/graded/${ttt}.html`)
+      
+    }
+    else{
+      res.redirect('/login')
+    }
+  
 })
 
-//play mode request
-app.get('/Play',authenticateToken,function(req,res){
-  res.sendFile(dir+'/play/game.html')
-
+//listen mode pages
+app.get('/listen/:id',function(req,res){
+  const tt=req.params.id
+  if(req.session.user && req.cookies.user_sid)
+  {
+  res.sendFile(dir+`/listen/${tt}.html`)
+  }
+  else
+  {
+    res.redirect("/login")
+  }
 })
-
-
-
-//logout code
-//app.get('/logout',  (req, res)=> {
-    
-    //req.session.destroy((err)=>{
-        //res.sendFile(dir+'/index.html')
-    //})
-
-  //});
-app.get('/logout',(req,res)=>{
-  isloggedIn=false
-  res.redirect('/')
-})
-
-
 
 //video streaming
 app.get('/:level/:f', function(req, res) {
-    const levell=req.params.level
-    const fi=req.params.f
-    const path = `public/listen/assets/videos/${levell}/${fi}`
-    const stat = fs.statSync(path)
-    const fileSize = stat.size
-    const range = req.headers.range
-     
-    if (range) {
-    const parts = range.replace(/bytes=/, "").split("-")
-    const start = parseInt(parts[0], 10)
-    const end = parts[1]
-    ? parseInt(parts[1], 10)
-    : fileSize-1
-     
-    const chunksize = (end-start)+1
-    const file = fs.createReadStream(path, {start, end})
-    const head = {
-    'Content-Range': `bytes ${start}-${end}/${fileSize}`,
-    'Accept-Ranges': 'bytes',
-    'Content-Length': chunksize,
-    'Content-Type': 'video/mp4',
+  const levell=req.params.level
+  const fi=req.params.f
+  const path = `public/listen/assets/videos/${levell}/${fi}`
+  const stat = fs.statSync(path)
+  const fileSize = stat.size
+  const range = req.headers.range
+   
+  if (range) {
+  const parts = range.replace(/bytes=/, "").split("-")
+  const start = parseInt(parts[0], 10)
+  const end = parts[1]
+  ? parseInt(parts[1], 10)
+  : fileSize-1
+   
+  const chunksize = (end-start)+1
+  const file = fs.createReadStream(path, {start, end})
+  const head = {
+  'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+  'Accept-Ranges': 'bytes',
+  'Content-Length': chunksize,
+  'Content-Type': 'video/mp4',
+  }
+   
+  res.writeHead(206, head)
+  file.pipe(res)
+  } else {
+  const head = {
+  'Content-Length': fileSize,
+  'Content-Type': 'video/mp4',
+  }
+  res.writeHead(200, head)
+  fs.createReadStream(path).pipe(res)
+  }
+  })
+
+  //play mode request
+  app.get('/Play',function(req,res){
+    if(req.session.user && req.cookies.user_sid)
+    {
+    res.sendFile(dir+'/play/game.html')
     }
-     
-    res.writeHead(206, head)
-    file.pipe(res)
-    } else {
-    const head = {
-    'Content-Length': fileSize,
-    'Content-Type': 'video/mp4',
+    else{
+      res.redirect('/login')
     }
-    res.writeHead(200, head)
-    fs.createReadStream(path).pipe(res)
-    }
-    })
-
-
-    /*function checkAuthenticated(req,res,next){
-      if(req.isAuthenticated()){
-        return next()
-      }
-      res.redirect('/')
-    }*/
-    
-
-function authenticateToken(req,res,next){
-  //const authHeader = req.headers['authorization']
-  //const token = authHeader && authHeader.split(' ')[1]
-  //if (token==null) return res.redirect('/index.html')
-
-  //jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{
-    //if(err)
-    //return res.redirect('/index.html')
-    //req.user=user 
-    //next()
-  //})
-  if(isloggedIn===false)
-  res.redirect('/index.html')
-  else
-  next()
   
-}
+  })
 
 
 
-
-//launching the express server
-app.listen(port, () => {
-    console.log("Server listening on port " +port );
+// route for user logout
+app.get("/logout", (req, res) => {
+  if (req.session.user && req.cookies.user_sid) {
+    res.clearCookie("user_sid");
+    res.redirect("/");
+  } else {
+    res.redirect("/login");
+  }
 });
 
+// route for handling 404 requests(unavailable routes)
+app.use(function (req, res, next) {
+  res.status(404).send("Sorry can't find that!");
+});
 
-/*Q1.findOne({question:"what is my name"},function(err,ques){
-  if(err)
-  console.log("kata")
-  if(ques)
-  {
-    console.log(ques.option1)
-  }
-})*/
-
-
-//var myobj = {question:"what is my name",option1:"BHARGAV",option2:"ROY",option3:"bhav",option4:"ana",answer:"BHARGAV"}
-//var que = new Q1(myobj)
-//que.save()
-
-//var myobj = {question:"./videos/apple.jpg",answer:"apple"}
-//var que = new Q2(myobj)
-//que.save()
-
-//var myobj = {question:"how are u",answer:"mai thik hoon"}
-//var que = new Q3(myobj)
-//que.save()
+// start the express server
+app.listen(app.get("port"), () =>
+  console.log(`App started on port ${app.get("port")}`)
+);

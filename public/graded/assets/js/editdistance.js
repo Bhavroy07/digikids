@@ -23,7 +23,9 @@ function drawChart()
     var score=document.querySelectorAll('.score');
     for(var i3=0;i3<arr3.length;i3++)
     {
-        var diff=Math.abs(arr2[i3].length-arr3[i3]);
+        var diff=(arr2[i3].length-arr3[i3]);
+        if(diff<0)
+        diff=0;
         var percent=(diff/arr2[i3].length)*100
         score[i3].value=`${percent.toFixed(2)}%`;
         total+=arr2[i3].length;

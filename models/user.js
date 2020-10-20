@@ -1,46 +1,46 @@
-var mongoose = require("mongoose");
-const bcrypt = require("bcryptjs")
-const jwt = require('jsonwebtoken')
-let SALT=10
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt')
 
+mongoose.connect("mongodb://localhost:27017/Child_user",{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+})
 
-var childSchema = new mongoose.Schema({
-    Name: String,
-    Gender: String,
+ 
+const userSchema=mongoose.Schema({
     email:{
         type:String,
         unique:true,
-        lowercase:true
-    } ,
-    password:String,
+        required:true
+    },
+    name:{
+        type:String,
+        required:true
+    },
+    gender:
+    {
+        type:String,
+        required:true
+    },
+    password:
+    {
+        type:String,
+        required:true
+    }
+})
 
-});
+userSchema.pre("save",function(next){
+    if(!this.isModified("password")){
+        return next()
+    }
+    this.password=bcrypt.hashSync(this.password,10)
+    next()
+})
 
-//check password for login
-childSchema.methods.comparePassword=function(candidatePassword,checkPassword){
-    bcrypt.compare(candidatePassword,this.password, function(err,isMatch){
-        if(err) return checkPassword(err)
-        checkPassword(null,isMatch)
-    })
+userSchema.methods.comparePassword = function(plaintext,callback){
+    return callback(null,bcrypt.compareSync(plaintext,this.password))
 }
 
-//hashing password before putting in database
-childSchema.pre('save',async function (next){
-    const user=this
-    if(user.isModified('password')){
-        user.password=await bcrypt.hash(user.password,8)
-    }
-    next()
-    
-    })
-/*childSchema.pre('save', function (next){
-    const user=this
-    if(user.isModified('password')){
-        user.password= bcrypt.hash(user.password,8)
-    }
-    next()
-    
-    })*/
-var User = mongoose.model("User", childSchema);
+const userModel = mongoose.model("user",userSchema)
 
-module.exports=User
+module.exports = userModel
