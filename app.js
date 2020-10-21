@@ -7,6 +7,11 @@ var User = require("./models/User");
 const fs = require('fs')
 const path = require('path')
 
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
+
+const otpgenerator=require('./public/assets/js/generateotp')
+
 var app = express();
 const dir=path.join(__dirname, "public")
 app.use(express.static(dir));
@@ -147,6 +152,57 @@ app.get('/graded/:id',function(req,res){
   
 })
 
+//play mode request
+app.get('/Play',function(req,res){
+  if(req.session.user && req.cookies.user_sid)
+  {
+  res.sendFile(dir+'/play/game.html')
+  }
+  else{
+    res.redirect('/login')
+  }
+
+})
+
+//forgot password route
+app.get('/forgot',function(req,res){
+  res.sendFile(dir+'/verification/authentication.html')
+})
+
+// Use Smtp Protocol to send Email
+app.post('/sendmail',function(req,res){
+  var otp = otpgenerator()
+  
+  var email_add = req.body.email
+  
+
+  var transporter = nodemailer.createTransport(smtpTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    auth: {
+      user: 'bhargavbale80@gmail.com',
+      pass: 'Bhaskar2306$'
+    }
+  }));
+  
+  var mailOptions = {
+    from: 'bhargavbale80@gmail.com',
+    to: email_add,
+    subject: 'OTP for email verification',
+    text: `Your OTP is ${otp}.This will be valid for 5 mins`
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.redirect('/login')
+    }
+  });  
+  
+  });
+
 //listen mode pages
 app.get('/listen/:id',function(req,res){
   const tt=req.params.id
@@ -197,17 +253,7 @@ app.get('/:level/:f', function(req, res) {
   }
   })
 
-  //play mode request
-  app.get('/Play',function(req,res){
-    if(req.session.user && req.cookies.user_sid)
-    {
-    res.sendFile(dir+'/play/game.html')
-    }
-    else{
-      res.redirect('/login')
-    }
   
-  })
 
 
 
