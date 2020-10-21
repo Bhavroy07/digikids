@@ -1,9 +1,39 @@
-<form>
-	<i class="fa fa-envelope-open" aria-hidden="true"></i>
-	<h1>Verification</h1>
-	<br>
-	<h3>Enter the OTP:</h3>
-	<p>Check your Inbox for the OTP.</p>
-	<input type="text" class="form-control" id="otp" name="otp" placeholder="One Time Password" required>
-	<button type="submit" class="btn btn-danger">Verify OTP</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../assets/css/verification.css">
+
+	<title>OTP Authentication</title>
+</head>
+<body>
+	<h1 class="logo"><strong> DigiKids </strong></h1>
+	<div class="container">
+		<form>
+			<i class="fa fa-envelope-open" aria-hidden="true"></i>
+			<h1>Verification</h1>
+			<br>
+			<h3>Enter the OTP:</h3>
+			<p>Check your Inbox for the OTP.</p>
+			<input type="text" class="form-control" id="otp" name="otp" placeholder="One Time Password" required>
+			<button type="submit" class="btn btn-danger">Verify OTP</button>
+			<br>
+			<p id="msg"></p>
+		</form>
+	</div>
+
+</body>
+</html>
+
+
+
+
+
+
