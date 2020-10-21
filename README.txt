@@ -3,3 +3,7 @@ Run this web site on your system and let your child learn to speak in the most e
 
 NOTE:
 Before running this code, do not forget to install Node and MongoDB.
+
+Creators:
+Bhargav Roy
+Nimit Kumar Jain
