@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
+
+	<title>OTP Authentication</title>
+	<style type="text/css">
+		body
+		{
+			background: url("../assets/images/img.jpeg");
+			background-size: 100% 120%;
+		}
+		.container
+		{
+			margin:3% auto;
+			background-color: cyan;
+			font-family: 'Zilla Slab';
+			font-size: 1.5em;
+			width: 600px;
+			border-radius: 20px;
+			box-shadow: 1px 1px 4px 4px rgba(0,0,0,0.6);
+			text-align: center;
+			padding:2% 2%;
+			border: 3px blue solid;
+		}
+		p
+		{
+			color:red;
+			font-size: 0.6em;
+		}
+		.form-control
+		{
+			width: 300px;
+			margin: 2% auto;
+		}
+		input:focus{
+			outline: 0 0 0 0  !important;
+			box-shadow: 0 0 0 0 !important;
+		}
+		.btn
+		{
+			margin-top:3%;
+			width:200px;
+		}
+		.logo
+		{
+			font-family: Acme;
+			margin-top: 0.8%;
+			color: white;
+			font-size: 4em;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="logo"><strong> DigiKids </strong></h1>
+	<div class="container">
+		<form>
+			<i class="fa fa-paper-plane" aria-hidden="true"></i>
+			<h1>Verification</h1>
+			<br>
+			<h3>Enter your Email Address:</h3>
+			<p>We will send a <strong>One Time Password</strong> to your Inbox. </p>
+			<input type="email" class="form-control" id="Email" name="email" placeholder="Email Address" required>
+			<button type="submit" class="btn btn-danger" onclick="func()">Send OTP</button>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		function func()
+		{
+			var req = new XMLHttpRequest();
+			req.open('GET','otp.html',true);
+			req.send();
+			req.onreadystatechange = function(){
+				if(req.readyState==4 && req.status==200)
+				{
+					document.getElementByClass('container').innerHTML = req.responseText;
+				}
+			}
+		}
+	</script>
+</body>
+</html>
