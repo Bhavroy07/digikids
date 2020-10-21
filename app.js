@@ -6,6 +6,7 @@ var morgan = require("morgan");
 var User = require("./models/User");
 const fs = require('fs')
 const path = require('path')
+const bcrypt = require('bcrypt')
 
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
@@ -15,6 +16,10 @@ const otpgenerator=require('./public/assets/js/generateotp')
 var app = express();
 const dir=path.join(__dirname, "public")
 app.use(express.static(dir));
+
+var sendTime = 0
+var emal = ''
+var otp = 'abce'
 
 // set our application port
 app.set("port", 3000);
@@ -171,9 +176,12 @@ app.get('/forgot',function(req,res){
 
 // Use Smtp Protocol to send Email
 app.post('/sendmail',function(req,res){
-  var otp = otpgenerator()
+  otp = otpgenerator()
+  var d = new Date()
+  sendTime = d.getTime()
   
   var email_add = req.body.email
+  emal = email_add
   
 
   var transporter = nodemailer.createTransport(smtpTransport({
@@ -197,11 +205,67 @@ app.post('/sendmail',function(req,res){
       console.log(error);
     } else {
       console.log('Email sent: ' + info.response);
-      res.redirect('/login')
+      res.redirect('/otp')
     }
   });  
   
   });
+
+
+//otp enter page
+app.get('/otp',function(req,res){
+  res.sendFile(dir+'/verification/otp.html')
+}) 
+
+app.post('/changepwd',function(req,res){
+  var otps = req.body.otp
+  var d = new Date()
+  var recieveTime = d.getTime()
+  if(recieveTime-sendTime>120000)
+  {
+    res.redirect('/forgot')
+  }
+  else
+  {
+    if(otps==otp)
+    {
+    res.redirect('/change_pwd')
+    }
+    else
+    {
+      res.redirect('/forgot')
+    }
+  }
+
+})
+
+//change password page
+app.get('/change_pwd',function(req,res){
+  res.sendFile(dir+'/verification/password.html')
+})
+
+//update password in database
+app.post('/update_password',function(req,res){
+  var updateuser = User.findOne({email:emal})
+  if(!updateuser)
+  {
+    res.send("no user available")
+  }
+  else
+  {
+    var pwd = req.body.password
+    pwd = bcrypt.hashSync(pwd,10)
+    console.log(pwd)
+    User.updateOne({email: emal}, {
+      password: pwd
+  }, function(err, affected, resp) {
+     console.log(resp);
+  })
+    res.redirect('/login')
+  }
+
+
+})
 
 //listen mode pages
 app.get('/listen/:id',function(req,res){
