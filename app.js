@@ -12,6 +12,7 @@ var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
 const otpgenerator=require('./public/assets/js/generateotp')
+const error_f=require('./public/assets/js/lib/errorhandling')
 
 var app = express();
 const dir=path.join(__dirname, "public")
@@ -46,6 +47,7 @@ app.use(
   })
 );
 
+
 // This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
 // This usually happens when you stop your express server after login, your cookie still remains saved in the browser.
 app.use((req, res, next) => {
@@ -76,7 +78,14 @@ app
     res.sendFile(dir + "/signup.html");
   })
   .post((req, res) => {
+    if(req.body.password!==req.body.confirmPassword)
+    {
+      error_f(3)
+      res.redirect('/signup')
+    }
 
+    else
+    {
     var user = new User({
       name: req.body.name,
       email: req.body.email,
@@ -92,6 +101,7 @@ app
         res.redirect("/landing");
       }
     });
+  }
   });
 
 // route for user Login
@@ -107,10 +117,12 @@ app
       try {
         var user = await User.findOne({ email: email }).exec();
         if(!user) {
+            error_f(0)
             res.redirect("/login");
         }
         user.comparePassword(password, (error, match) => {
             if(!match) {
+              error_f(0)
               res.redirect("/login");
             }
         });
@@ -197,7 +209,7 @@ app.post('/sendmail',function(req,res){
     from: 'bhargavbale80@gmail.com',
     to: email_add,
     subject: 'OTP for email verification',
-    text: `Your OTP is ${otp}.This will be valid for 5 mins`
+    text: `Your OTP is ${otp}. This will be valid for 3 mins`
   };
   
   transporter.sendMail(mailOptions, function(error, info){
@@ -217,12 +229,14 @@ app.get('/otp',function(req,res){
   res.sendFile(dir+'/verification/otp.html')
 }) 
 
+//verify otp
 app.post('/changepwd',function(req,res){
   var otps = req.body.otp
   var d = new Date()
   var recieveTime = d.getTime()
-  if(recieveTime-sendTime>120000)
+  if(recieveTime-sendTime>180000)
   {
+    error_f(2)
     res.redirect('/forgot')
   }
   else
@@ -233,7 +247,8 @@ app.post('/changepwd',function(req,res){
     }
     else
     {
-      res.redirect('/forgot')
+      error_f(1)
+      res.redirect('/forgot') 
     }
   }
 
@@ -249,7 +264,8 @@ app.post('/update_password',function(req,res){
   var updateuser = User.findOne({email:emal})
   if(!updateuser)
   {
-    res.send("no user available")
+    error_f(0)
+    res.redirect('/forgot')
   }
   else
   {
@@ -261,7 +277,7 @@ app.post('/update_password',function(req,res){
   }, function(err, affected, resp) {
      console.log(resp);
   })
-    res.redirect('/login')
+    res.redirect('/landing')
   }
 
 
