@@ -1,0 +1,19 @@
+body
+{
+	background: url(error.gif);
+	background-repeat: none;
+	background-size: 100% 425%;
+}
+.container
+{
+	margin:2% auto;
+	text-align: center;
+	color: red;
+	font-family: 'Zilla Slab';
+}
+
+.btn
+{
+	width: 150px;
+	font-size: 1.2em;
+}
