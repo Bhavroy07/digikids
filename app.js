@@ -277,7 +277,7 @@ app.post('/update_password',function(req,res){
   }, function(err, affected, resp) {
      console.log(resp);
   })
-    res.redirect('/landing')
+    res.redirect('/login')
   }
 
 

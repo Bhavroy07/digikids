@@ -17,8 +17,9 @@ function voicetotext(num)
 		ans.textContent= record;
 	}
 	recognition.start();
+}
 
-	/*start.addEventListener("click", function(){
+/*start.addEventListener("click", function(){
 		recognition.start();
 	});*/
-}
+	
