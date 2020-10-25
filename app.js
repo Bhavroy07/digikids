@@ -80,8 +80,7 @@ app
   .post((req, res) => {
     if(req.body.password!==req.body.confirmPassword)
     {
-      error_f(3)
-      res.redirect('/signup')
+      res.sendFile(dir+'/errors/passwordsdontmatch.html')
     }
 
     else
@@ -117,13 +116,11 @@ app
       try {
         var user = await User.findOne({ email: email }).exec();
         if(!user) {
-            error_f(0)
-            res.redirect("/login");
+            res.sendFile(dir+"/errors/invalidemail.html");
         }
         user.comparePassword(password, (error, match) => {
             if(!match) {
-              error_f(0)
-              res.redirect("/login");
+              res.redirect('/errors');
             }
         });
         req.session.user = user;
@@ -132,6 +129,11 @@ app
       console.log(error)
     }
   });
+
+//route for login error
+app.get('/errors',(req,res)=>{
+  res.sendFile(dir+"/errors/loginerror.html")
+})
 
 
 // route for user's dashboard
@@ -236,8 +238,7 @@ app.post('/changepwd',function(req,res){
   var recieveTime = d.getTime()
   if(recieveTime-sendTime>180000)
   {
-    error_f(2)
-    res.redirect('/forgot')
+    res.sendFile(dir+'/errors/otptimeout.html')
   }
   else
   {
@@ -247,8 +248,7 @@ app.post('/changepwd',function(req,res){
     }
     else
     {
-      error_f(1)
-      res.redirect('/forgot') 
+      res.sendFile(dir+'/errors/invalidotp.html')
     }
   }
 
@@ -259,16 +259,23 @@ app.get('/change_pwd',function(req,res){
   res.sendFile(dir+'/verification/password.html')
 })
 
+app.get('/invalid',(req,res)=>{
+  res.sendFile(dir+'/errors/nouser.html')
+})
+
 //update password in database
-app.post('/update_password',function(req,res){
-  var updateuser = User.findOne({email:emal})
+app.post('/update_password',async(req,res)=>{
+  var updateuser = await User.findOne({email:emal})
   if(!updateuser)
   {
-    error_f(0)
-    res.redirect('/forgot')
+    res.redirect('/invalid')
   }
   else
   {
+    if(req.body.password!==req.body.confirmpassword)
+    {
+      res.redirect('/invalidmatch')
+    }
     var pwd = req.body.password
     pwd = bcrypt.hashSync(pwd,10)
     console.log(pwd)
@@ -281,6 +288,10 @@ app.post('/update_password',function(req,res){
   }
 
 
+})
+
+app.get('/invalidmatch',(req,res)=>{
+  res.sendFile(dir+'/errors/credsdontmatch.html')
 })
 
 //listen mode pages
