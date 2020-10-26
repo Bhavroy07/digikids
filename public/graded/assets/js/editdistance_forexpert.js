@@ -1,3 +1,54 @@
+var questions=["In which direction does the sunrise?",
+"How many planets are in our solar system?",
+"How many days are in a leap year?",
+"How many colors are there in a rainbow?",
+"How many letters are there in the English alphabet?",
+"Which animal is called King of Jungle?",
+"How many sides are there in a triangle?",
+"Which month of the year has the least number of days?",
+"We smell with our?",
+"Which day comes after Friday?",
+"How many months do we have in a year?",
+"Which festival is also known as “Festival of Lights”?",
+"What do you call a type of shape that has five sides?",
+"Which is the largest continent in the world ?",
+"In which festival we play with colours?",
+"Which planet is closest to the sun?",
+"which is the largest state of India?",
+["The largest river in India?"]];
+
+var answers=[["East",""],["8","Eight"],["366","Three hundred sixty six"],["7","Seven"],["26","Twenty six"],["Lion",""],
+["3","Three"],["February",""],["Nose",""],["Saturday",""],["12","Twelve"],["Diwali","Deepavali"],["Pentagon",""],
+["Asia",""],["Holi",""],["Mercury",""],["Rajasthan",""],["Ganga",""]];
+
+var arr2=[];
+var quesArr=[];
+while(quesArr.length<6)
+{
+    var random=Math.floor(Math.random()*questions.length);
+    var flg=0;
+    for(var i=0;i<arr2.length;i++)
+    {
+        if(questions[random]===quesArr[i])
+        {
+            flg=1;
+            break;
+        }
+    }
+    if(flg==0)
+    {
+        quesArr.push(questions[random]);
+        arr2.push(answers[random]);
+    }
+}
+var ques = document.querySelectorAll(".ques");
+for(var i=0; i<6; i++)
+{
+    ques[i].textContent=quesArr[i];
+}
+
+
+
 function draw()
 {
     google.charts.load('current', {'packages':['corechart']});
@@ -14,14 +65,13 @@ function drawChart()
         arr[i]=objj.value;
     }
     var arr4=new Array();
-    var arr2=[["east",""],["8","eight"],["366","three hundred sixty six"],["7","seven"],["26","twenty six"],["lion",""]];
     var arr3=new Array();
     for(var i2=0;i2<arr.length;i2++)
     {
         if(arr2[i2].length>1)
         {
-            var dis1 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0])
-            var dis2 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][1])
+            var dis1 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0].toLowerCase());
+            var dis2 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][1].toLowerCase());
             if(dis1<dis2)
                 arr4.push(0)
             else
@@ -31,8 +81,8 @@ function drawChart()
         }
         else
         {
-            arr3.push(LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0]))
-            arr4.push(0)
+            arr3.push(LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0].toLowerCase()));
+            arr4.push(0);
         }
     }
     var accuracy=0,total=0;
@@ -41,7 +91,7 @@ function drawChart()
     {
         var diff=(arr2[i3][arr4[i3]].length-arr3[i3]);
         if(diff<0)
-        diff=0;
+            diff=0;
         var percent=0;
         if(arr2[i3][arr4[i3]].length>0) percent=(diff/arr2[i3][arr4[i3]].length)*100;
         
