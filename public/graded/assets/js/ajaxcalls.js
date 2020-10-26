@@ -1,7 +1,7 @@
 var http = require('http'),
       fs = require('fs'),
-     url = require('url'),
-http.createServer(function(request, response){
+     url = require('url')
+http.createServer((request, response)=>{
     var path = url.parse(request.url).pathname;
     if(path=="/graded/beginner"){
         var string = choices[Math.floor(Math.random()*choices.length)];
