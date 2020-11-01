@@ -1,0 +1,63 @@
+body
+{
+	background: url("../images/img.jpeg");
+	background-size: 100% 110%;
+	background-attachment: fixed;
+}
+#log
+{
+	text-align: center;
+	margin: 0.6% auto;
+}
+form
+{
+	margin: 7% 15%;
+}
+.logo
+{
+	font-family: Acme;
+	margin-top: 0.8%;
+	color: white;
+	font-size: 4em;
+}
+.container
+{
+	font-family: Zilla Slab;
+	text-align: center;
+	box-shadow: 1px 1px 4px 4px rgba(0,0,0,0.6);
+	background-color: cyan;
+	margin: 3.5% auto;
+	border: 3px blue solid;
+	width: 460px;
+	border-radius: 20px;
+}
+.input-group-prepend
+{
+	background-color: white;
+	width:50px;
+	display: inline-block;
+	font-size: 20px;
+	padding-top: 2%;
+	border-top-left-radius: 0.25em;
+	border-bottom-left-radius: 0.25em;
+}
+.form-control
+{
+	border: none;
+}
+input:focus{
+	outline: 0 0 0 0  !important;
+	box-shadow: 0 0 0 0 !important;
+}
+button
+{
+	width: 200px;
+	margin-top: 10%;
+	margin-bottom: 7%;
+	border-radius: 0.5em;
+	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.4);
+}
+#forgot
+{
+	margin-top: 0.2px;
+}

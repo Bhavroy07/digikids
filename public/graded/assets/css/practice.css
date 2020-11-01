@@ -51,21 +51,6 @@ body
 	border-radius: 0.75em;
 }
 
-.vid-style
-{
-	width: 250px;
-	height: 250px;
-	margin: 6% 12%;
-	padding: 5px 0;
-	border: 2px solid rgba(10,200,10,0.7);
-	border-radius: 0.4em;
-	background: white;
-}
-
-.vid-style:focus
-{
-	outline: none;
-}
 #author
 {
 	margin-top: 5%;

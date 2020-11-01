@@ -1,0 +1,88 @@
+body
+{
+	background: url("../images/img.jpeg");
+	background-size: 100% 110%;
+	background-attachment: fixed;
+	text-align: center;
+	font-family: 'Zilla Slab';
+}
+
+.navbar
+{
+	font-family: 'Zilla Slab';
+	font-size: 1.2em;
+}
+.navbar-brand
+{
+	font-family: Acme;
+	color: white;
+	font-size: 1.3em;
+}
+.nav-item
+{
+	width: 150px;
+	margin:0 3%;
+	padding: 0 2%;
+	text-align: center;
+}
+.nav-item:hover
+{
+	border: 1px solid red;
+	border-radius: 0.5em;
+	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.4);
+}
+
+.active
+{
+	border: 2px solid red;
+	border-radius: 0.5em;
+	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.4);
+}
+.sign-out
+{
+	margin-left: 35%;
+	border-radius: 0.75em;
+	width: 105px;
+}
+
+#beginner
+{
+	margin: 5% auto;
+	padding: 5% 5%;
+	width: 400px;
+	background-color: cyan;
+	border-radius: 25px;
+	border: 2px solid red;
+	box-shadow: 1px 1px 3px 4px rgba(0,0,0,0.6);
+}
+.file
+{
+	margin-bottom: 7%;
+}
+.btn-danger
+{
+	margin-top:7%;
+	width: 200px;
+}
+
+#intermediate
+{
+	margin: 5% auto;
+	padding: 5% 5%;
+	width: 400px;
+	background-color: cyan;
+	border-radius: 25px;
+	border: 2px solid red;
+	box-shadow: 1px 1px 3px 4px rgba(0,0,0,0.6);
+}
+
+#expert
+{
+	margin: 5% auto;
+	padding: 5% 5%;
+	width: 400px;
+	background-color: cyan;
+	border-radius: 25px;
+	border: 2px solid red;
+	box-shadow: 1px 1px 3px 4px rgba(0,0,0,0.6);
+}
