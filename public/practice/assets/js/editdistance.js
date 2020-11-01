@@ -70,8 +70,8 @@ function getvalues()
     }
 }
 LevenshteinDistance =  function(a1, b1){
-    a=a1//.toLowerCase()
-    b=b1//.toLowerCase()
+    a=a1.split(/\s/).join('');
+    b=b1.split(/\s/).join('');
     if(a.length == 0) return b.length; 
     if(b.length == 0) return a.length; 
 

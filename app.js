@@ -12,7 +12,6 @@ var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
 const otpgenerator=require('./public/assets/js/generateotp')
-const error_f=require('./public/assets/js/lib/errorhandling')
 
 var app = express();
 const dir=path.join(__dirname, "public")
@@ -42,7 +41,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      expires: 600000,
+      expires: 60000,
     },
   })
 );
