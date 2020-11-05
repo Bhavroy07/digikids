@@ -3,10 +3,12 @@ body
 	background: url("../images/img.jpeg");
 	background-size: 100% 110%;
 	background-attachment: fixed;
-	text-align: center;
 	font-family: 'Zilla Slab';
 }
-
+.container
+{
+	text-align: center;
+}
 .navbar
 {
 	font-family: 'Zilla Slab';
@@ -55,21 +57,31 @@ body
 	border: 2px solid red;
 	box-shadow: 1px 1px 3px 4px rgba(0,0,0,0.6);
 }
+#student
+{
+	margin: 5% auto;
+	padding: 5% 5%;
+	width: 800px;
+	background-color:rgb(5, 250, 242);
+	border-radius: 25px;
+	border: 2px solid red;
+	box-shadow: 1px 1px 3px 4px rgba(0,0,0,0.6);
+}
 .file
 {
-	margin-bottom: 7%;
+	margin-bottom: 2%;
 }
 .btn-danger
 {
-	margin-top:7%;
+	margin-top:3%;
 	width: 200px;
 }
 
 #intermediate
 {
 	margin: 5% auto;
-	padding: 5% 5%;
-	width: 400px;
+	padding: 2% 2%;
+	width: 60%;
 	background-color: cyan;
 	border-radius: 25px;
 	border: 2px solid red;
@@ -85,4 +97,9 @@ body
 	border-radius: 25px;
 	border: 2px solid red;
 	box-shadow: 1px 1px 3px 4px rgba(0,0,0,0.6);
+}
+textarea
+{
+	resize: none;
+	border-radius: 5px;
 }

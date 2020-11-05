@@ -68,7 +68,7 @@ function drawChart()
     var arr3=new Array();
     for(var i2=0;i2<arr.length;i2++)
     {
-        if(arr2[i2].length>1)
+        if(arr2[i2][1].length>1)
         {
             var dis1 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][0].toLowerCase());
             var dis2 = LevenshteinDistance(arr[i2].toLowerCase(),arr2[i2][1].toLowerCase());

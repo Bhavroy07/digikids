@@ -1,3 +1,42 @@
+<?php
+    include "connectdb.php";
+
+    $emailErr="";
+    $passErr="";
+    if(isset($_POST['signup']))
+    {
+      $err = false;
+      $name = $_POST['name'];
+      $gender = $_POST['gender'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      $confirm = $_POST['confirmPassword'];
+
+      // echo $name , $gender , $email , $confirm , $password;
+
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+      {
+        $emailErr = "Invalid email format";
+        $err = true;
+      }
+      if(strcmp($password,$confirm)!=0)
+      {
+        $passErr = "Passwords do not match.";
+        $err = true;
+      }
+
+      if($err == false)
+      {
+          $sql = "INSERT INTO `user`(`name`, `gender`, `email`, `password`) VALUES ('$name', '$gender' , '$email' , '$password')";
+          mysqli_query($con,$sql);
+          
+          echo "<script>
+            alert('Successfully signed up . Please login to continue');
+          </script>";
+          
+      }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +52,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
 
-  <title>DigiKids - Sign up</title>
+  <title>DigiKids - Teacher Sign up</title>
+  <style>
+.error {color: #FF0000;}
+</style>
 </head>
 <body>
   <div id="sign">
@@ -21,7 +63,7 @@
     <div class="container">
 
       <h1><strong> TEACHER  SIGN UP </strong></h1>
-      <form action="/signup"  method="POST" >
+      <form action="signup.php"  method="POST" >
 
         <div class="form-group input-group mb-3">
           <label for="Name"></label>
@@ -43,6 +85,7 @@
           </span>
         </div>
 
+        <span class="error"><?php echo $emailErr;?></span>
         <div class="form-group input-group mb-3">
           <label for="Email"></label>
           <div class="input-group-prepend">
@@ -51,6 +94,7 @@
           <input type="email" class="form-control" id="Email" name="email" placeholder="Email Address" required>
         </div>
 
+        <span class="error"><?php echo $passErr;?></span>
         <div class="form-group input-group mb-3">
           <label for="Password"></label>
           <div class="input-group-prepend">
@@ -66,13 +110,20 @@
           <input type="password" class="form-control" name="confirmPassword" id="ConfirmPassword" placeholder="Confirm Password" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <button type="submit" name="signup" class="btn btn-primary">Sign Up</button>
         <hr>
-        <p>Already have an account? <a href="/login"> Login </a></p>
-        <p>Are you a student? <a href="../login.html"> Click here</a></p>
+        <p>Already have an account? <a href="index.php"> Login </a></p>
+        <p>Are you a student? <a href="studentlogin.php"> Click here</a></p>
       </form>
     </div>
   </div>
+
+   <!-- prevents the form from resubmission -->
+   <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+    </script>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -8,6 +8,7 @@ const fs = require('fs')
 const path = require('path')
 const bcrypt = require('bcrypt')
 
+
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
@@ -41,7 +42,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      expires: 60000,
+      expires: 600000,
     },
   })
 );
@@ -56,6 +57,8 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 // middleware function to check for logged-in users
 var sessionChecker = (req, res, next) => {
   if (req.session.user && req.cookies.user_sid) {
@@ -64,6 +67,7 @@ var sessionChecker = (req, res, next) => {
     next();
   }
 };
+
 
 // route for Home-Page
 app.get("/", sessionChecker, (req, res) => {
@@ -102,6 +106,8 @@ app
   }
   });
 
+  
+ 
 // route for user Login
 app
   .route("/login")

@@ -1,3 +1,19 @@
+<?php
+
+	include "connectdb.php";
+	session_start();
+    if(isset($_SESSION['student_id']))
+    {
+        $id=$_SESSION['student_id'];
+        $user=$_SESSION['student_email'];
+    }
+    else
+    {
+        header("location:http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/studentlogin.php");
+        exit();
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,53 +26,38 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/landing.css">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
 
 	<title>DigiKids - Teacher</title>
+    <style>
+        .fa-smile-o
+        {
+            background-color: yellow;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="/landing"> DigiKids </a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="beginner.html"> Beginner </a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="intermediate.html"> Intermediate </a>
-				</li>
-				<li class="nav-item active disabled">
-					<a class="nav-link" href="expert.html"> Expert <span class="sr-only">(current)</span></a>
-				</li>
+		<a class="navbar-brand" href="#"> DigiKids </a>
 
-			</ul>
-
-			<a href="/logout" class="btn btn-outline-dark sign-out"> Sign out </a>
+			<a href="logout2.php" class="btn btn-outline-dark sign-out" style="margin-left: 1200px;"> Sign out </a>
 
 		</div>
 	</nav>
 
-	<div id="expert">
-		<form action="/" method="POST">
-			<label for="question"><h6>Enter the question:</h6></label> 
-			<input type="text" id="question" name="question" required>
-			<br>
-			<div class="form-group">
-				<label for="ans" ><h6> Enter the correct answer:</h6> </label>
-				<input type="text" name="ans" id ="ans"  required>
-			</div>
-			<a href="#" role="button" class="btn btn-danger"> Submit </a>
-		</form>
-	</div>
+    <div id="beginner">
+        <h2>Thank You <i class="fa fa-smile-o" aria-hidden="true"></i> </h2>
+        <h3>Your response has been recorded</h3>
+    </div>
 
-
-
-
-
+     <!-- prevents the form from resubmission -->
+	 <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+    </script>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

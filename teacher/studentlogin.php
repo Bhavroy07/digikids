@@ -1,3 +1,31 @@
+<?php
+    include "connectdb.php";
+    error_reporting(E_ERROR | E_PARSE);
+
+    if(isset($_POST['login']))
+    {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $result=mysqli_query($con ,"SELECT * FROM student WHERE email='$email' AND password='$password'");
+        $row=mysqli_fetch_array($result);
+        if($row>0)
+        {
+            session_start();
+			$_SESSION['student_id'] = $row[0];
+			$_SESSION['name']=$row[1];
+            $_SESSION['student_email'] = $email;
+            header("location:http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/student.php");
+        }
+        else
+        {
+            echo "<script>
+            alert('Invalid Login details.Please try again.');
+          </script>";
+        }
+    }
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +47,8 @@
 
 		<h1 class="logo"><strong> DigiKids </strong></h1>
 		<div class="container">
-			<h1 style="padding-top: 3%;"><strong> TEACHER  LOGIN </strong></h1>
-			<form  action="/login" method="POST">
+			<h1 style="padding-top: 3%;"><strong> STUDENT  LOGIN </strong></h1>
+			<form  action="studentlogin.php" method="POST">
 				<div class="form-group input-group mb-3">
 					<label for="Email"></label>
 					<div class="input-group-prepend">
@@ -37,18 +65,21 @@
 					<input type="password" class="form-control" id="Password" name="password" placeholder="Password" required>
 				</div>
 
-				<button type="submit" class="btn btn-primary">Login</button>
+				<button type="submit" name='login' class="btn btn-primary">Login</button>
 				<hr>
 				
-				<p>Forgot password? <a href="/forgot">Reset Password</a></p>
-				<p>Do not have an account? <a href="/signup">Sign Up</a></p>
-				<p>Are you a student? <a href="../login.html">Click here</a></p>
+				<p>Are you a teacher? <a href="index.php">Click here</a></p>
 			</form>
 		</div>
 	</div>
 
 
-
+    <!-- prevents the form from resubmission -->
+   <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+    </script>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
