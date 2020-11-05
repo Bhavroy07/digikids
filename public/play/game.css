@@ -34,3 +34,56 @@
 	margin-left: 40%;
 	border-radius: 0.75em;
 }
+#msg
+{
+	margin: 0 35%;
+	font-family: Itim;
+}
+.p
+{
+	color:red;
+}
+.r
+{
+	color: blue;
+}
+.e
+{
+	color: green;
+}
+.s
+{
+	color: orange;
+}
+.a
+{
+	color: darkcyan;
+}
+.n
+{
+	color: tomato;
+}
+.y
+{
+	color: dodgerblue;
+}
+.k
+{
+	color:deeppink;
+}
+.t
+{
+	color: indigo;
+}
+.o
+{
+	color: teal;
+}
+.l
+{
+	color: slateblue;
+}
+.space
+{
+	color:white;
+}
