@@ -208,7 +208,7 @@ app.post('/sendmail',function(req,res){
     host: 'smtp.gmail.com',
     auth: {
       user: 'bhargavbale80@gmail.com',
-      pass: 'Bhaskar230620'
+      pass: '*************'
     }
   }));
   
